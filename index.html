@@ -399,7 +399,7 @@ function askDone(k){if(done.has(k)){toggle(k);return}
   qSheet(null,{seq,day,title:S[s].n+" bitti",onDone:()=>{if(!done.has(k))toggle(k)}})}
 
 /* GitHub senkron: kayıtlar talhageyik57-sudo/tyt-kamp-veri/veri.json içinde */
-const GH={owner:"talhageyik57-sudo",repo:"tyt-kamp-veri",file:"veri.json"};
+const GH={owner:/\.github\.io$/.test(location.hostname)?location.hostname.split(".")[0]:"talhageyik57-sudo",repo:"tyt-kamp-veri",file:"veri.json"};
 let DB={d:{},q:{}},ghTok="",ghSha=null,dirty=false,pushT=null,syncing=false,ghState="local";
 const lsGet=(k,f)=>{try{const v=localStorage.getItem(k);return v==null?f:JSON.parse(v)}catch{return f}};
 const lsSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
