@@ -1,5 +1,5 @@
 <!doctype html><html lang="tr"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>TYT Kampı</title>
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -15,7 +15,7 @@
   --acc:#a98bff;--acc2:#ff5fa2;--ok:#3ddc84;--ink:#0b0820;--font:"Sora",system-ui,-apple-system,sans-serif;--spring:cubic-bezier(.34,1.56,.64,1);--ease:cubic-bezier(.22,1,.36,1);color-scheme:dark}
 html{overflow-x:hidden;background:var(--bg)}
 body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:15px;line-height:1.5;-webkit-tap-highlight-color:transparent;overflow-x:hidden;min-height:100vh}
-.aur{position:fixed;inset:-20%;z-index:0;pointer-events:none;filter:blur(10px)}
+.aur{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none;filter:blur(10px)}
 .aur{transition:opacity 2s,filter 2s}
 .night .aur{opacity:.45;filter:blur(18px) saturate(.7)}
 .night{--acc:#9c86e8;--acc2:#e46a9c}
@@ -241,9 +241,42 @@ html,body{margin:0}
 .sync{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:middle;margin-left:6px;position:relative;top:-3px;background:var(--muted);transition:background .4s,box-shadow .4s}
 .sync::before{content:"";position:absolute;inset:-14px}
 .sync.ok{background:#3ddc84;box-shadow:0 0 10px #3ddc84}.sync.wait{background:#ffd166;box-shadow:0 0 10px #ffd166;animation:bl 1s infinite}.sync.err{background:#ff5f7a;box-shadow:0 0 10px #ff5f7a}
-.tok{font:inherit;font-size:15px;padding:14px;border-radius:16px;border:1px solid var(--edge);background:rgba(255,255,255,.08);color:#fff;width:100%;box-sizing:border-box;min-height:52px}
+.tok{font:inherit;font-size:16px;padding:14px;border-radius:16px;border:1px solid var(--edge);background:rgba(255,255,255,.08);color:#fff;width:100%;box-sizing:border-box;min-height:52px}
 .tok:focus{outline:2px solid var(--acc)}
 .sheet p.muted{font-size:14px;line-height:1.5}
+
+/* dokunma: yakınlaştırma ve yana kayma yok */
+html,body{touch-action:pan-y;overscroll-behavior:none;max-width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%}
+.car,.krow,.gantt,.chips.sc{touch-action:pan-x pan-y}
+input,button,select,textarea{touch-action:manipulation}
+input{font-size:16px}
+/* tablet */
+@media (min-width:820px){
+  body{font-size:16px}
+  .wrap{max-width:1180px;padding-left:max(32px,env(safe-area-inset-left,0px));padding-right:max(32px,env(safe-area-inset-right,0px));padding-bottom:140px}
+  .top h1{font-size:34px}
+  .view{gap:20px}
+  #day{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:20px;align-items:start}
+  #day>*{grid-column:1}
+  #day>.lcol{grid-column:2;grid-row:1 / span 4}
+  #day>.hint{grid-column:2}
+  .glass.now h2{font-size:42px}
+  .rw .main{padding:18px 0 18px 20px}.ic{width:54px;height:54px;font-size:17px}.tx b{font-size:18px}.tx span{font-size:13px}
+  .car{margin-inline:0;padding-inline:0}.wcard{width:300px;transform:none}
+  .wl2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  #qv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+  #qv>.qnav,#qv>.qchart,#qv>.qempty{grid-column:1/-1}
+  .qhero{display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:28px}
+  .qhero .qadd{margin-top:0;padding:0 28px}
+  .ms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}
+  .gg{grid-template-columns:110px repeat(13,minmax(24px,1fr))}
+  .gb{height:26px}
+  .sheet .in{max-width:640px}
+  .sheet{left:50%;right:auto;width:min(720px,100%);transform:translate(-50%,100%);border-radius:30px 30px 0 0}
+  .sheet.on{transform:translate(-50%,0)}
+  nav button{padding:13px 24px;font-size:15px}
+}
+@media (min-width:1200px){.wrap{max-width:1280px}}
 </style>
 
 <div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -440,10 +473,17 @@ function connectSheet(first){const ov=h("div",{class:"ov"}),sh=h("div",{class:"s
   const inp=h("input",{class:"tok",type:"password",id:"tok",placeholder:"github_pat_…",autocomplete:"off",autocapitalize:"off",spellcheck:"false",value:ghTok});
   const err=h("p",{class:"err",hidden:true}),ok=h("button",{class:"save",onclick:async()=>{const t=inp.value.trim();if(!t){err.textContent="Anahtarı yapıştır.";err.hidden=false;return}
       ok.disabled=true;ok.textContent="Bağlanıyor…";const old=ghTok;ghTok=t;
-      try{const r=await api("GET");if(r.status===401||r.status===403||(r.status===404&&!(await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}`,{headers:{Authorization:"Bearer "+t}})).ok))throw new Error("auth");
-        lsSet("tytTok",t);await pull().catch(()=>{});schedule();await push();toast("Bağlandı, kayıtlar senkron");burst();close();
+      try{const r=await api("GET");let why="";
+        if(r.status===401)why="Anahtar geçersiz (401). Yanlış kopyalanmış ya da silinmiş olabilir.";
+        else if(r.status===403)why="Anahtarın bu depoya izni yok (403). Contents: Read and write verilmeli.";
+        else if(r.status===404){const rr=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}`,{headers:{Authorization:"Bearer "+t}});
+          if(rr.status===401)why="Anahtar geçersiz (401).";else if(!rr.ok)why=`${GH.owner}/${GH.repo} deposu bulunamadı ya da anahtar bu depoyu göremiyor (${rr.status}). Anahtarı oluştururken "Only select repositories"te tyt-kamp-veri seçili olmalı ve depo ${GH.owner} hesabında olmalı.`}
+        else if(!r.ok)why="GitHub hatası ("+r.status+").";
+        if(why){const e=new Error(why);e.why=why;throw e}
+        lsSet("tytTok",t);await pull().catch(()=>{});schedule();await push();if(ghState==="err"){const e=new Error("w");e.why="Okuma tamam ama yazılamadı. Anahtarda Contents izni Read and write olmalı.";throw e}
+        toast("Bağlandı, kayıtlar senkron");burst();close();
         if(!old){setInterval(ghLoop,20000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)ghLoop()});addEventListener("online",ghLoop)}}
-      catch{ghTok=old;err.textContent="Bağlanamadı. Anahtarı doğru kopyaladığından ve tyt-kamp-veri deposuna Contents: Read and write izni verdiğinden emin ol.";err.hidden=false;ok.disabled=false;ok.textContent="Bağlan"}}},"Bağlan");
+      catch(x){ghTok=old;lsSet("tytTok",old||"");err.textContent=x.why||("Bağlanamadı: "+(x.message||"internet bağlantısını kontrol et"));err.hidden=false;ok.disabled=false;ok.textContent="Bağlan"}}},"Bağlan");
   inn.append(h("div",null,h("div",{class:"eb"},"Senkron"),h("h2",null,first?"Telefon ve tableti bağla":"GitHub bağlantısı")),
     h("p",{class:"muted"},"Kayıtların GitHub'daki gizli tyt-kamp-veri deposunda tutulur. Her cihazda bir kez erişim anahtarını yapıştırman yeter."),
     h("div",{class:"fld"},h("span",{class:"eb"},"Erişim anahtarı"),inp),err,ok,
@@ -550,7 +590,7 @@ function drawDay(dir){const box=$("#day");box.textContent="";box.className="view
       h("div",{class:"more"},h("div",null,h("p",null,nt+" · "+dur(mins(e)-mins(b))),
         h("div",{class:"btns"},s&&S[s].u&&tt===S[s].h?h("a",{class:"lnk",href:S[s].u,target:"_blank",rel:"noopener"},"Hocanın listesi ↗"):"",h("button",{class:"lnk",onclick:()=>qSheet(s||"par")},"+ Soru ekle")))));
     wl.append(r)});
-  box.append(h("div",{class:"st",style:"--i:2"},wl),h("p",{class:"hint st",style:"--i:9"},(D===6?"15:00 sonrası serbest · ":"")+"Satıra dokun: ayrıntı · Daireye dokun: bitti · Kaydır: gün değiştir"));
+  box.append(h("div",{class:"st lcol",style:"--i:2"},wl),h("p",{class:"hint st",style:"--i:9"},(D===6?"15:00 sonrası serbest · ":"")+"Satıra dokun: ayrıntı · Daireye dokun: bitti · Kaydır: gün değiştir"));
   let sx=null,sy=null;box.addEventListener("touchstart",e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
   box.addEventListener("touchend",e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;sx=null;if(Math.abs(dx)<70||Math.abs(dy)>Math.abs(dx))return;
     if(dx<0){if(D<6)pickDay(D+1);else if(W<WEEKS-1){W++;D=0;openCard=-1;show("bugun",1)}}else{if(D>0)pickDay(D-1);else if(W>0){W--;D=6;openCard=-1;show("bugun",-1)}}},{passive:true})}
@@ -618,5 +658,6 @@ header();show("bugun",0);requestAnimationFrame(moveInd);
 setInterval(()=>{const l=$("#live");if(l){const n=liveCard();n.classList.remove("st");l.replaceWith(n)}ambient()},30000);ambient();setTimeout(greet,350);
 ghInit();
 
+document.addEventListener("gesturestart",e=>e.preventDefault());document.addEventListener("dblclick",e=>e.preventDefault(),{passive:false});
 if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
 </script></body></html>
