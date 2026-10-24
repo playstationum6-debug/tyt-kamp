@@ -277,11 +277,86 @@ input{font-size:16px}
   nav button{padding:13px 24px;font-size:15px}
 }
 @media (min-width:1200px){.wrap{max-width:1280px}}
+
+/* === Premium Dark düzeni (ChatGPT taslağı, bizim renkler) === */
+:root{--s3:rgba(255,255,255,.1);--bg:#0a0818;--card:#14112a;--card2:#1c1838;--edge:rgba(255,255,255,.08);--glass:var(--card);--glass2:var(--card2)}
+body{background:var(--bg)}
+.aur{opacity:.32}.night .aur{opacity:.18}
+.glass,.wcard,.wrow,.stat,.gantt,.note{background:var(--card)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border:1px solid var(--edge)!important;border-radius:22px}
+.wkpill{background:var(--card);-webkit-backdrop-filter:none;backdrop-filter:none;border:1px solid var(--edge)}
+.top h1{display:flex;align-items:center;gap:10px}.logo{width:34px;height:26px;flex:none}
+/* alt menü */
+nav{left:0!important;right:0;transform:none!important;bottom:0!important;border-radius:0;padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:rgba(10,8,24,.96);border:0;border-top:1px solid var(--edge);box-shadow:none;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+nav .ind{display:none}
+nav button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 0!important;font-size:11px!important;font-weight:600;color:var(--muted);border-radius:12px}
+nav button svg{width:24px;height:24px}
+nav button[aria-current="page"]{color:#fff}
+nav button[aria-current="page"] svg{color:var(--acc);filter:drop-shadow(0 0 8px rgba(169,139,255,.6))}
+.wrap{padding-bottom:110px}
+.toast{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+/* gün şeridi */
+.strip{background:transparent!important;border:0!important;padding:0 0 4px!important}
+.strip .sel{background:linear-gradient(135deg,var(--acc),var(--acc2));border:0;box-shadow:0 6px 20px rgba(169,139,255,.35);top:0}
+.dd{height:58px}.strip .arr{height:58px}
+.dd[aria-pressed="true"] small,.dd[aria-pressed="true"] b{color:#fff}
+.dd i{width:6px;height:6px}
+/* şimdi kartı */
+.glass.now2{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center;padding:18px;background:linear-gradient(135deg,color-mix(in srgb,var(--dc) 22%,var(--card)),var(--card) 70%)!important;border:1px solid color-mix(in srgb,var(--dc) 45%,transparent)!important}
+.glass.now2::after{display:none}
+.now2 .nl{display:flex;flex-direction:column;gap:10px;min-width:0}
+.now2 small{font-size:13px!important;letter-spacing:0!important;text-transform:none!important;color:#fff!important;font-weight:700!important}
+.nrow{display:flex;align-items:center;gap:12px;min-width:0}
+.nrow h2{font-size:22px!important;-webkit-text-fill-color:#fff;background:none!important;color:#fff!important;padding:0!important}
+.nrow .sub{font-size:13px}
+.bar2{display:flex;align-items:center;gap:10px}.bar2 .bar{flex:1;margin:0!important}.bar2 b{font-size:13px;color:var(--muted)}
+.now2 .meta{font-size:12px;color:var(--muted)}
+.nr{position:relative;width:104px;height:104px}.nr svg{width:104px;height:104px;transform:rotate(-90deg)}
+.nt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1}.nt b{font-size:24px;font-weight:800}.nt span{font-size:11px;color:var(--muted)}
+/* ikon kareleri */
+.ic{background:var(--dc)!important;color:#fff;box-shadow:0 6px 18px color-mix(in srgb,var(--dc) 40%,transparent)!important;border-radius:14px!important;width:44px!important;height:44px!important}
+.ic svg{width:24px;height:24px}
+.rw.on .ic{filter:grayscale(.5) brightness(.75)}
+.rw.live{background:color-mix(in srgb,var(--dc) 12%,transparent)!important}
+.dprog{border-radius:20px}
+.dprog .bar i{background:linear-gradient(90deg,#3ddc84,#2ec4b6)!important}
+/* hafta */
+.wcard{width:128px!important;max-width:none;padding:12px!important;gap:6px!important;border-radius:18px!important;transform:none!important;align-items:center;text-align:center}
+.wcard .r{flex-direction:column;align-items:center;gap:4px}
+.wcard .big{font-size:20px!important}.wcard .eb{display:none}.wcard .now{font-size:10px}
+.wcard svg{width:44px!important;height:44px!important}
+.wcard .wdays,.wcard .wfin{display:none}
+.wcard.sel{background:color-mix(in srgb,var(--acc) 18%,var(--card))!important;border-color:var(--acc)!important;box-shadow:0 0 0 1px var(--acc),0 8px 30px rgba(169,139,255,.25)!important}
+.wsum{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;padding:16px}
+.wr{position:relative;width:76px;height:76px}.wr svg{width:76px;height:76px;transform:rotate(-90deg)}.wr b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:18px}
+.wsr{display:flex;flex-direction:column;gap:10px;min-width:0}
+.wbars{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;align-items:end}
+.wb{display:flex;flex-direction:column;align-items:center;gap:4px}
+.wbt{width:14px;height:44px;border-radius:7px;background:rgba(255,255,255,.08);display:flex;align-items:flex-end;overflow:hidden}
+.wbt i{display:block;width:100%;border-radius:7px;background:linear-gradient(0deg,#3ddc84,#2ec4b6)}
+.wb small{font-size:10px;color:var(--muted)}
+.wrow .wv{font-size:18px!important}
+.pip.on{box-shadow:none}
+/* soru */
+.qbig{background:none!important;-webkit-text-fill-color:#fff;color:#fff!important}
+.qhero::after{display:none}
+.qadd{background:linear-gradient(135deg,#3ddc84,#2ec4b6)!important;color:#08140e!important;box-shadow:0 8px 24px rgba(61,220,132,.3)!important}
+.seg .sind{background:linear-gradient(135deg,var(--acc),var(--acc2))!important;border:0!important}
+.sheet{background:#15122b!important}
+.save{background:linear-gradient(135deg,#3ddc84,#2ec4b6)!important;color:#08140e!important}
+/* tablet: sol menü */
+@media (min-width:1024px){
+  nav{top:0!important;bottom:0!important;right:auto!important;width:220px;display:flex;flex-direction:column;gap:4px;padding:calc(96px + env(safe-area-inset-top,0px)) 14px 20px!important;border-top:0;border-right:1px solid var(--edge);background:rgba(12,10,28,.97)}
+  nav button{flex-direction:row;justify-content:flex-start;gap:12px;padding:12px 14px!important;font-size:15px!important}
+  nav button[aria-current="page"]{background:var(--card2)}
+  .wrap{margin-left:220px!important;max-width:1060px;padding-bottom:40px}
+  .toast{bottom:28px;left:calc(50% + 110px)}
+  .nrow h2{font-size:28px!important}
+}
 </style>
 
 <div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
-<div class="wrap"><div class="top"><div><div class="eb" id="dt"></div><h1>TYT Kampı <button id="sync" class="sync local" aria-label="Senkron ayarları" onclick="connectSheet(false)"></button></h1></div><div class="wkpill" id="wp"></div></div><main id="main"></main></div>
-<nav id="nav"><span class="ind" id="ind"></span><button data-t="bugun" aria-current="page">Bugün</button><button data-t="hafta">Hafta</button><button data-t="soru">Soru</button><button data-t="plan">Plan</button></nav>
+<div class="wrap"><div class="top"><div><div class="eb" id="dt"></div><h1><svg class="logo" viewBox="0 0 32 24" aria-hidden="true"><path d="M1 22L11 6l5 8 4-5 11 13z" fill="url(#lg)"/><path d="M11 6l2.5 4-2.5 2-2.5-2z" fill="#fff" opacity=".9"/><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a98bff"/><stop offset="1" stop-color="#ff5fa2"/></linearGradient></defs></svg>TYT Kampı <button id="sync" class="sync local" aria-label="Senkron ayarları" onclick="connectSheet(false)"></button></h1></div><div class="wkpill" id="wp"></div></div><main id="main"></main></div>
+<nav id="nav"><span class="ind" id="ind"></span><button data-t="bugun" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Bugün</span></button><button data-t="hafta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Hafta</span></button><button data-t="soru"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span>Soru</span></button><button data-t="plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h10M4 12h16M4 18h7"/><circle cx="18" cy="6" r="2"/><circle cx="14" cy="18" r="2"/></svg><span>Plan</span></button></nav>
 <canvas id="fx"></canvas>
 <div class="toast" id="toast"></div>
 <script>
@@ -583,7 +658,7 @@ function drawDay(dir){const box=$("#day");box.textContent="";box.className="view
     const tgl=()=>{const was=r.classList.contains("op");wl.querySelectorAll(".rw").forEach(z=>z.classList.remove("op"));if(!was){r.classList.add("op");openCard=i}else openCard=-1;r.querySelector(".main").setAttribute("aria-expanded",String(!was))};
     r.append(h("div",{class:"rmain"},
       h("button",{class:"main","aria-expanded":String(openCard===i),onclick:tgl},
-        h("span",{class:"ic","aria-hidden":"true"},s?S[s].n.slice(0,2):"Pa"),
+        ico(s),
         h("span",{class:"tx"},h("b",null,s?S[s].n:tt),h("span",null,b+"–"+e+(s?" · "+tt:""))),
         on?h("span",{class:"lv"},"şimdi"):""),
       h("button",{class:"ck","aria-label":(s?S[s].n:tt)+" bitti olarak işaretle",onclick:()=>askDone(k)})),
@@ -594,15 +669,20 @@ function drawDay(dir){const box=$("#day");box.textContent="";box.className="view
   let sx=null,sy=null;box.addEventListener("touchstart",e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
   box.addEventListener("touchend",e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;sx=null;if(Math.abs(dx)<70||Math.abs(dy)>Math.abs(dx))return;
     if(dx<0){if(D<6)pickDay(D+1);else if(W<WEEKS-1){W++;D=0;openCard=-1;show("bugun",1)}}else{if(D>0)pickDay(D-1);else if(W>0){W--;D=6;openCard=-1;show("bugun",-1)}}},{passive:true})}
+const ICO={par:'<path d="M4 6h16M4 10h16M4 14h10M4 18h13"/>',prb:'<path d="M17 5H7l6 7-6 7h10"/>',mat:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/>',geo:'<path d="M12 4l9 16H3z"/><path d="M8 20l4-7 4 7"/>',fiz:'<circle cx="12" cy="12" r="1.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(-60 12 12)"/>',kim:'<path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/>',bio:'<path d="M5 19c0-8.5 5.5-14 14-14 0 8.5-5.5 14-14 14z"/><path d="M5 19l8.5-8.5"/>',tr:'<path d="M4 19V6a2 2 0 0 1 2-2h13v14H6a2 2 0 0 0-2 2v-1z"/><path d="M8 8h7M8 12h5"/>',cog:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><ellipse cx="12" cy="12" rx="4" ry="9"/>',tar:'<path d="M3 21h18M5 21V10M9.5 21V10M14.5 21V10M19 21V10M2.5 10L12 4l9.5 6z"/>',x:'<path d="M12 3l2.6 5.6 6 .7-4.5 4.1 1.2 6L12 16.4 6.7 19.4l1.2-6L3.4 9.3l6-.7z"/>'};
+function ico(s){const e=h("span",{class:"ic","aria-hidden":"true"});e.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICO[s]||ICO.x}</svg>`;return e}
 function liveCard(){const sl=slots(nW,nD),now=new Date(),m=now.getHours()*60+now.getMinutes();
   let i=sl.findIndex(x=>mins(x[0])<=m&&m<mins(x[1])),live=i>=0;if(!live)i=sl.findIndex(x=>mins(x[0])>m);
   const el=h("div",{class:"glass now st",id:"live",style:"--i:1"});
   if(i<0){el.append(h("small",null,"Bugün bitti"),h("h2",null,dayState(nW,nD).c==="full"?"Hepsi tamam":"Günü kapat"),h("span",{class:"sub"},"Yarın 07:00'de paragrafla devam."));return el}
   const[b,e,s,tt]=sl[i],p=live?(m-mins(b))/(mins(e)-mins(b)):0,left=live?mins(e)-m:mins(b)-m;
-  el.style.setProperty("--dc",col(s));
-  el.append(h("small",null,live?h("span",{class:"dotlive"}):null,(live?"Şimdi · ":"Sıradaki · ")+b+"–"+e),h("h2",null,s?S[s].n:tt),
-    h("span",{class:"sub"},(s?tt+" · ":"")+(live?"bitmesine ":"başlamasına ")+dur(left)),
-    live?h("div",{class:"bar"},h("i",{style:"width:"+Math.round(p*100)+"%"})):null);return el}
+  el.style.setProperty("--dc",col(s));el.classList.add("now2");
+  const hm=String(Math.floor(left/60)).padStart(2,"0")+":"+String(left%60).padStart(2,"0");
+  el.append(h("div",{class:"nl"},h("small",null,live?h("span",{class:"dotlive"}):null,live?"Şimdi":"Sıradaki"),
+      h("div",{class:"nrow"},ico(s),h("div",null,h("h2",null,s?S[s].n:tt),h("span",{class:"sub"},s?tt:""))),
+      live?h("div",{class:"bar2"},h("div",{class:"bar"},h("i",{style:"width:"+Math.round(p*100)+"%"})),h("b",null,"%"+Math.round(p*100))):null,
+      h("span",{class:"meta"},(i+1)+"/"+sl.length+". blok · "+b+"–"+e)),
+    h("div",{class:"nr"},ring(live?1-p:1,104,44,9,col(s),"rgba(255,255,255,.08)"),h("div",{class:"nt"},h("b",null,hm),h("span",null,live?"kaldı":"sonra"))));return el}
 /* HAFTA */
 function vHafta(m){
   const car=h("div",{class:"car st",style:"--i:0"});
@@ -615,6 +695,10 @@ function vHafta(m){
   m.append(car);requestAnimationFrame(()=>{const c=car.children[HW];car.scrollLeft=c.offsetLeft-(car.clientWidth-c.offsetWidth)/2});
   let tm=null;car.addEventListener("scroll",()=>{clearTimeout(tm);tm=setTimeout(()=>{const mid=car.scrollLeft+car.clientWidth/2;let best=0,bd=1e9;[...car.children].forEach((c,i)=>{const dd=Math.abs(c.offsetLeft+c.offsetWidth/2-mid);if(dd<bd){bd=dd;best=i}});if(best!==HW)pickWeek(best,true)},140)},{passive:true});
   m.append(h("div",{id:"goals",class:"view"}));drawGoals(0)}
+function wsum(w){const svg=ring(wkFrac(w),76,31,8,"var(--ok)","rgba(255,255,255,.08)");svg.dataset.wr=w;
+  return h("div",{class:"glass wsum st",style:"--i:1"},h("div",{class:"wr"},svg,h("b",{class:"num","data-wp":w},"%"+Math.round(wkFrac(w)*100))),
+    h("div",{class:"wsr"},h("div",{class:"eb"},(w+1)+". hafta · "+fmt(dateOf(w,0))+" – "+fmt(dateOf(w,6))),
+      h("div",{class:"wbars"},GUN.map((g,d)=>{const st=dayState(w,d);return h("div",{class:"wb"},h("span",{class:"wbt"},h("i",{style:"height:"+Math.round(st.n/st.t*100)+"%"})),h("small",null,g))}))))}
 function pickWeek(w,noScroll){if(w===HW)return;const dir=w>HW?1:-1;HW=w;document.querySelectorAll(".wcard").forEach((c,i)=>c.classList.toggle("sel",i===HW));
   const car=$(".car"),c=car.children[HW];if(!noScroll)car.scrollTo({left:c.offsetLeft-(car.clientWidth-c.offsetWidth)/2,behavior:"smooth"});drawGoals(dir)}
 function drawGoals(dir){const g=$("#goals");g.textContent="";g.className="view"+(dir?" in"+(dir<0?" l":""):"");
@@ -626,7 +710,7 @@ function drawGoals(dir){const g=$("#goals");g.textContent="";g.className="view"+
       h("div",{class:"wt"},h("span",{class:"nm"},h("span",{class:"dot"}),S[s].n),S[s].E===HW?h("span",{class:"fin"},"Final"):null),
       h("div",{class:"wv"},rng),h("div",{class:"wh2"},ss.length+" oturum"),
       h("div",{class:"pips"},ss.map(x=>h("button",{class:"pip","data-k":`d-${HW}-${x.d}-${x.i}`,"aria-label":S[s].n+" "+GUN[x.d]+" oturumu",onclick:()=>askDone(`d-${HW}-${x.d}-${x.i}`)},GUN[x.d])))))});
-  g.append(list);sync()}
+  g.insertBefore(wsum(HW),g.children[1]||null);g.append(list);sync()}
 
 /* PLAN */
 function vPlan(m){
