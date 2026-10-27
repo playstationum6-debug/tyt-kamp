@@ -372,8 +372,8 @@ const yt=q=>"https://www.youtube.com/results?search_query="+encodeURIComponent(q
 /* N: izlenecek video (tanıtımlar hariç), E: son hafta (0'dan), u: liste */
 const S={
  mat:{n:"Matematik",h:"Soner Akıncı",c:"#7b93ff",N:103,E:6,u:"https://youtube.com/playlist?list=PLSKqG1c0berdV6kF83_8lH4YiGYFjzuM3",birim:"video",sonra:"Soru çözümü · 2. kitap"},
- geo:{n:"Geometri",h:"Eyüp B.",c:"#b48cff",N:28,E:6,u:"https://youtube.com/playlist?list=PLto0Y-Oz3y1of5PHEoL9WTJaGaoi4CyCW",birim:"video",sonra:"Soru çözümü · 2. kitap"},
- fiz:{n:"Fizik",h:"Altuğ Güneş",c:"#2ec4b6",N:121,E:12,u:yt("Altuğ Güneş 45 günde TYT fizik tarz kampı 2027"),birim:"ders",sonra:"Karma test · yanlış defteri"},
+ geo:{n:"Geometri",h:"Eyüp B.",c:"#b48cff",N:28,E:7,u:"https://youtube.com/playlist?list=PLto0Y-Oz3y1of5PHEoL9WTJaGaoi4CyCW",birim:"video",sonra:"Soru çözümü · 2. kitap"},
+ fiz:{n:"Fizik",h:"Altuğ Güneş",c:"#2ec4b6",N:121,E:7,u:yt("Altuğ Güneş 45 günde TYT fizik tarz kampı 2027"),birim:"ders",sonra:"Karma test · yanlış defteri"},
  kim:{n:"Kimya",h:"Ferrum",c:"#ffb020",N:92,E:7,u:yt("Ferrum 2027 TYT kimya kampı"),birim:"video",sonra:"Karma test · yanlış defteri"},
  bio:{n:"Biyoloji",h:"Dr. Biyoloji",c:"#4cc26a",N:56,E:9,u:yt("Dr. Biyoloji YKS 2027 TYT konu anlatım kampı"),birim:"ders",sonra:"Karma test · yanlış defteri"},
  tr:{n:"Türkçe",h:"Emek Taştan",c:"#ff8a65",N:41,E:10,u:"https://youtube.com/playlist?list=PLVsjxq1KrcgzyfIp2GPiyxQgbg7Xi_nHz",birim:"video",sonra:"Paragraf · karma test"},
@@ -388,7 +388,7 @@ function h(t,p,...k){const e=document.createElement(t);if(p)for(const[a,v]of Obj
 const dateOf=(w,d)=>new Date(START.getTime()+(w*7+d)*DAY);
 const fmt=t=>t.toLocaleDateString("tr-TR",{day:"numeric",month:"short"});
 /* kimya bitince Salı fen bloğu fiziğe geçer */
-const A14=["geo","kim","geo","fiz","geo","bio"],B16=["fiz","geo","bio","geo","kim","geo"],C20=["cog","tr","tar","cog","tr","tar"];
+const A14=["geo","kim","geo","fiz","geo","bio"],B16=["fiz","geo","bio","geo","kim","fiz"],C20=["cog","tr","tar","cog","tr","tar"];
 function daysOf(s,w){if(s==="mat")return[0,1,2,3,4,5];return[0,1,2,3,4,5].filter(d=>A14[d]===s||B16[d]===s||C20[d]===s)}
 const SES={};ORDER.forEach(s=>{SES[s]=[];for(let w=0;w<=S[s].E;w++)daysOf(s,w).forEach(d=>SES[s].push(w*7+d))});
 /* o oturumda izlenecek video aralığı; null = kamp bitti */
