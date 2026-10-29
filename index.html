@@ -385,24 +385,49 @@ nav button[aria-current="page"] svg{color:var(--acc);filter:drop-shadow(0 0 8px 
 .save.qsv[disabled]{background:rgba(255,255,255,.1);color:var(--muted);box-shadow:none;opacity:1}
 .shd{display:flex;align-items:center;justify-content:space-between}
 .sx{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid var(--edge);font-size:24px;line-height:1;color:var(--fg)}
-.ncard{border-radius:24px;padding:16px 16px 10px;margin-top:14px}
-.nhd{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.nhd b{font-size:17px;font-weight:800}
-.ncnt{font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.08);color:var(--muted)}
-.ncnt.all{background:color-mix(in srgb,var(--ok) 20%,transparent);color:var(--ok)}
-.tdi{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--edge)}
-.tdc{width:26px;height:26px;flex:none;border-radius:9px;border:2px solid rgba(255,255,255,.3);display:grid;place-items:center;transition:background .25s,border-color .25s,transform .3s var(--spring)}
+.ncard{border-radius:26px;padding:18px 16px 14px;margin-top:14px;display:flex;flex-direction:column}
+.nhd{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.nrg{position:relative;width:58px;height:58px;flex:none}
+.nrg svg{position:absolute;inset:0}
+.nhd .nrg b{position:absolute;inset:0;display:grid;place-items:center;font-size:15px;font-weight:800}
+.nhd b{font-size:19px;font-weight:800;display:block}
+.nhd small{color:var(--muted);font-size:13px}
+.nempty{color:var(--muted);font-size:14px;padding:8px 0 4px}
+.tdi{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--edge)}
+.tdi .di{width:38px;height:38px;flex:none;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--dc) 18%,transparent);color:var(--dc)}
+.tdi .di svg{width:20px;height:20px}
+.tdt{flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;font-size:16px;line-height:1.35;word-break:break-word}
+.tdt small{color:var(--muted);font-size:12px}
+.tbar{height:6px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden}
+.tbar i{display:block;height:100%;border-radius:3px;background:var(--dc);transition:width .6s var(--ease)}
+.tdi.on .tdt>span:first-child{text-decoration:line-through;color:var(--muted)}
+.tdi.on .di{opacity:.55}
+.tdc{width:28px;height:28px;flex:none;border-radius:10px;border:2px solid rgba(255,255,255,.3);display:grid;place-items:center;transition:background .25s,border-color .25s,transform .3s var(--spring)}
 .tdc:active{transform:scale(.85)}
 .tdi.on .tdc{background:var(--ok);border-color:var(--ok)}
 .tdi.on .tdc::after{content:"";width:11px;height:6px;border:solid var(--ink);border-width:0 0 2.5px 2.5px;transform:translateY(-1px) rotate(-45deg)}
-.tdt{flex:1;font-size:16px;line-height:1.4;word-break:break-word;transition:color .25s}
-.tdi.on .tdt{text-decoration:line-through;color:var(--muted)}
-.tdx{width:34px;height:34px;flex:none;border-radius:50%;color:var(--muted);font-size:20px;opacity:.55}
-.nadd{display:flex;align-items:center;gap:10px;border-top:1px solid var(--edge);padding-top:8px}
-.np{width:26px;text-align:center;color:var(--acc);font-size:22px;font-weight:700;flex:none}
-.nadd input{flex:1;min-width:0;min-height:44px;background:transparent;border:0;color:var(--fg);font:inherit;font-size:16px;outline:none}
-.nadd input::placeholder{color:var(--muted)}
-.nadd button{padding:0 14px;min-height:36px;border-radius:999px;background:var(--acc);color:var(--ink);font-weight:700;font-size:14px;flex:none}
+.tdx{width:30px;height:30px;flex:none;border-radius:50%;color:var(--muted);font-size:20px;opacity:.5}
+.ncarry{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:8px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,#ffb020 15%,transparent);color:#ffcf70;font-size:14px}
+.ncarry b{font-weight:800}
+.npre{border-top:1px solid var(--edge);padding-top:12px;margin-top:4px;display:flex;flex-direction:column;gap:8px}
+.nch{display:flex;flex-wrap:wrap;gap:8px}
+.nch .chip{border-style:dashed;min-height:38px;font-size:13.5px}
+.nch .chip.own{border-style:solid;background:color-mix(in srgb,var(--acc) 20%,transparent);color:var(--fg)}
+.ncomp{border-top:1px solid var(--edge);padding-top:12px;margin-top:4px;display:flex;flex-direction:column;gap:10px}
+.nds{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:5px}
+.nd{aspect-ratio:1;border-radius:11px;border:1px solid var(--edge);background:rgba(255,255,255,.04);display:grid;place-items:center;padding:0;transition:transform .25s var(--spring)}
+.nd .di{color:var(--dc);display:grid;place-items:center}
+.nd .di svg{width:18px;height:18px}
+.nd[aria-pressed="true"]{background:var(--dc);border-color:var(--dc);transform:scale(1.08)}
+.nd[aria-pressed="true"] .di{color:var(--ink)}
+.ncomp input[type=text],.nnum{min-height:50px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid var(--edge);color:var(--fg);padding:0 14px;font:inherit;font-size:16px;outline:none}
+.ncomp input:focus{border-color:var(--acc)}
+.nrow{display:grid;grid-template-columns:1fr 90px;align-items:center;gap:4px 10px;font-size:14px;font-weight:600}
+.nrow small{grid-column:1/-1;color:var(--muted);font-weight:400;font-size:12px}
+.nnum{width:90px;text-align:center;box-sizing:border-box}
+.nrow[hidden]{display:none}
+.ncomp .row2{display:grid;grid-template-columns:1fr 2fr;gap:8px}
+.ncomp .save{min-height:50px}
 </style>
 
 <div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -538,7 +563,7 @@ function qSheet(pre,opt={}){const seq=opt.seq||null;let si=0;const first=seq?seq
     const err=h("p",{class:"err",hidden:true});
     const doSave=async()=>{if(!D_.ders||!D_.n)return;sv.disabled=true;const t=Date.now(),e={id:"q-"+t,ders:D_.ders,konu:D_.konu,n:D_.n,t,day:opt.day||dayKey(t)};
       if(!(await qAdd(e))){sv.disabled=false;return}
-      toast("+"+D_.n+" "+QD[D_.ders].n);if(tab==="soru"){drawQ(false);refreshHero()}
+      toast("+"+D_.n+" "+QD[D_.ders].n);drawNotes();if(tab==="soru"){drawQ(false);refreshHero()}
       burst(innerWidth/2,innerHeight*.7,[QD[D_.ders].c,"#fff","#a98bff"]);D_.n=0;draw()};
     const sv=h("button",{class:"save qsv",disabled:!(D_.ders&&D_.n),onclick:doSave},svT());
     inn.append(err,sv,h("p",{class:"hint"},"Kaydedince ders seçili kalır, sıradaki testi hemen girebilirsin."));inn.scrollTop=y}
@@ -754,19 +779,44 @@ let nT=null;
 function nAdd(day,tx){const t=Date.now(),id="n-"+t;DB.n[id]={id,day,tx,v:0,t,u:t};local();schedule()}
 function nSet(id,p){DB.n[id]={...DB.n[id],...p,u:Date.now()};local();schedule()}
 function dIco(s){const e=h("span",{class:"di","aria-hidden":"true"});e.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICO[s]||ICO.x}</svg>`;return e}
-function drawNotes(){const old=$("#notes");if(!old)return;const k=dayKey(dateOf(W,D).getTime()+12*36e5);
-  const L=Object.values(DB.n||{}).filter(e=>!e.x&&e.day===k).sort((a,b)=>a.t-b.t),dn=L.filter(e=>e.v).length;
+const NX={yd:{c:"#ffb020",i:'<path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h11M9 8h6"/>'},tk:{c:"#3fa7ff",i:'<path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 5v6h-6"/>'},dn:{c:"#ee6b85",i:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/>'},nt:{c:"#a98bff",i:'<path d="M5 12l5 5L20 7"/>'}};
+const nCol=s=>QD[s]?.c||NX[s]?.c||NX.nt.c;
+function nIco(s){const e=h("span",{class:"di","aria-hidden":"true",style:"--dc:"+nCol(s)});e.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICO[s]||NX[s]?.i||NX.nt.i}</svg>`;return e}
+const PRE=[["par",25,"Paragraf 25 soru"],["prb",15,"Problem 15 soru"],["yd",0,"Yanlışları deftere at"],["tk",0,"Tekrar"],["dn",0,"Deneme"]];
+let nComp=false,nS=null,nN=0;
+function nAdd2(day,tx,s_,n_){const t=Date.now(),id="n-"+t;DB.n[id]={id,day,tx,s:s_||null,n:n_||0,v:0,t,u:t};local();schedule()}
+function nGot(e){return e.n&&QD[e.s]?Q.filter(q=>q.day===e.day&&q.ders===e.s).reduce((a,q)=>a+q.n,0):0}
+const nDone=e=>!!(e.v||(e.n&&nGot(e)>=e.n));
+function drawNotes(){const old=$("#notes");if(!old)return;const dt=dateOf(W,D),k=dayKey(dt.getTime()+12*36e5),ky=dayKey(dt.getTime()-12*36e5);
+  const L=Object.values(DB.n||{}).filter(e=>!e.x&&e.day===k).sort((a,b)=>a.t-b.t),dn=L.filter(nDone).length;
+  const Y=Object.values(DB.n||{}).filter(e=>!e.x&&e.day===ky&&!nDone(e));
   const box=h("div",{id:"notes",class:"glass ncard"});
-  box.append(h("div",{class:"nhd"},h("b",null,"Günün notları"),L.length?h("span",{class:"ncnt"+(dn===L.length?" all":"")},dn+"/"+L.length):""));
-  L.forEach(e=>box.append(h("div",{class:"tdi"+(e.v?" on":"")},
-    h("button",{class:"tdc","aria-label":e.v?"Yapılmadı":"Yapıldı",onclick:ev=>{nSet(e.id,{v:e.v?0:1});if(!e.v){const r=ev.currentTarget.getBoundingClientRect();burst(r.left+14,r.top+14,["#3ddc84","#fff"])}drawNotes()}}),
-    h("span",{class:"tdt"},e.tx),
-    h("button",{class:"tdx","aria-label":"Sil",onclick:()=>{nSet(e.id,{x:1});drawNotes()}},"×"))));
-  const inp=h("input",{type:"text",placeholder:L.length?"Not ekle…":"Bugün ne yapacaksın? Yaz, ekle",enterkeyhint:"done",maxlength:"200",autocomplete:"off"});
-  const add=()=>{const v=inp.value.trim();if(!v)return;nAdd(k,v);drawNotes();const ni=$("#notes input");if(ni)ni.focus()};
-  inp.onkeydown=e=>{if(e.key==="Enter")add()};
-  box.append(h("div",{class:"nadd"},h("span",{class:"np"},"+"),inp,h("button",{"aria-label":"Ekle",onclick:add},"Ekle")));
+  const rg=ring(L.length?dn/L.length:0,58,23,6,"var(--ok)","rgba(255,255,255,.1)");
+  box.append(h("div",{class:"nhd"},h("div",{class:"nrg"},rg,h("b",{class:"num"},L.length?dn+"/"+L.length:"0")),
+    h("div",{style:"flex:1"},h("b",null,"Bugün yapacaklarım"),h("small",null,dt.toLocaleDateString("tr-TR",{weekday:"long",day:"numeric",month:"long"})))));
+  if(!L.length)box.append(h("p",{class:"nempty"},"Bugün ne yapacaksın? Aşağıdan hedef ekle."));
+  L.forEach(e=>{const got=nGot(e),ok=nDone(e);
+    box.append(h("div",{class:"tdi"+(ok?" on":""),style:"--dc:"+nCol(e.s)},nIco(e.s||"nt"),
+      h("div",{class:"tdt"},h("span",null,e.tx),e.n&&QD[e.s]?[h("span",{class:"tbar"},h("i",{style:"width:"+Math.min(100,Math.round(got/e.n*100))+"%"})),h("small",null,Math.min(got,e.n)+" / "+e.n+(ok?" · tamam":" · soru ekledikçe dolar"))]:null),
+      h("button",{class:"tdc","aria-label":ok?"Yapılmadı":"Yapıldı",onclick:ev=>{const nv=ok?0:1;nSet(e.id,{v:nv,...(nv?{}:{n:e.n&&got>=e.n?0:e.n})});
+        if(nv){const r=ev.currentTarget.getBoundingClientRect();burst(r.left+14,r.top+14,[nCol(e.s),"#fff"]);if(dn+1===L.length){toast("Günün hedefleri tamam!");setTimeout(()=>burst(innerWidth/2,innerHeight*.4,["#3ddc84","#ffd166","#a98bff","#fff"]),250)}}drawNotes()}}),
+      h("button",{class:"tdx","aria-label":"Sil",onclick:()=>{nSet(e.id,{x:1});drawNotes()}},"×")))});
+  if(Y.length)box.append(h("button",{class:"ncarry",onclick:()=>{Y.forEach(e=>nSet(e.id,{day:k}));toast(Y.length+" hedef bugüne alındı");drawNotes()}},h("span",null,"Dünden "+Y.length+" hedef kaldı"),h("b",null,"Bugüne al")));
+  if(!nComp){box.append(h("div",{class:"npre"},h("span",{class:"eb"},"Tek dokunuşla ekle"),h("div",{class:"nch"},
+    PRE.filter(x=>!L.some(e=>e.tx===x[2])).map(([s_,n_,t_])=>h("button",{class:"chip",style:"--dc:"+nCol(s_),onclick:()=>{nAdd2(k,t_,s_,n_);drawNotes()}},"+ "+t_)),
+    h("button",{class:"chip own",onclick:()=>{nComp=true;nS=null;nN=0;drawNotes();const i=$("#notes input");if(i)i.focus()}},"+ Kendin yaz"))))}
+  else{const inp=h("input",{type:"text",placeholder:"Örn. Fizik vektörler videoları",enterkeyhint:"done",maxlength:"200",autocomplete:"off"});
+    const num=h("input",{type:"number",inputmode:"numeric",min:"0",placeholder:"0",class:"nnum",value:nN||""});
+    const add=()=>{let v=inp.value.trim();const nn=Math.max(0,parseInt(num.value)||0);if(!v&&nS&&QD[nS]&&nn)v=QD[nS].n+" "+nn+" soru";if(!v){inp.focus();return}
+      nAdd2(k,v,nS,QD[nS]?nn:0);nComp=false;drawNotes()};
+    inp.onkeydown=e=>{if(e.key==="Enter")add()};
+    box.append(h("div",{class:"ncomp"},h("span",{class:"eb"},"Ders · isteğe bağlı"),
+      h("div",{class:"nds"},QO.map(q=>h("button",{class:"nd","aria-pressed":nS===q,"aria-label":QD[q].n,style:"--dc:"+QD[q].c,onclick:()=>{nS=nS===q?null:q;nN=parseInt(num.value)||0;box.querySelectorAll(".nd").forEach(b=>b.setAttribute("aria-pressed",String(b.getAttribute("aria-label")===QD[nS]?.n)));numRow.hidden=!nS}},nIco(q)))),
+      inp,
+      (numRow=h("label",{class:"nrow",hidden:!nS},h("span",null,"Soru hedefi"),num,h("small",null,"Soru ekledikçe kendiliğinden dolar"))),
+      h("div",{class:"row2"},h("button",{class:"ghost",onclick:()=>{nComp=false;drawNotes()}},"Vazgeç"),h("button",{class:"save",onclick:add},"Ekle"))))}
   old.replaceWith(box)}
+let numRow;
 
 /* sekmeler */
 const VIEWS={bugun:vBugun,hafta:vHafta,soru:vSoru},TABS=["bugun","hafta","soru"];
