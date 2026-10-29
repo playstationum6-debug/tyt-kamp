@@ -383,31 +383,31 @@ nav button[aria-current="page"] svg{color:var(--acc);filter:drop-shadow(0 0 8px 
 .kt small{color:var(--muted);font-weight:500;font-size:12px}
 .save.qsv{background:var(--dc);color:var(--ink);box-shadow:0 8px 26px color-mix(in srgb,var(--dc) 40%,transparent)}
 .save.qsv[disabled]{background:rgba(255,255,255,.1);color:var(--muted);box-shadow:none;opacity:1}
-.nwrap{display:flex;flex-direction:column;gap:14px}
-.nnav{display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:center}
-.nnav button{width:46px;height:46px;flex:none;border-radius:50%;background:var(--glass);border:1px solid var(--edge);font-size:24px;line-height:1}
-.nnav h2{font-size:24px;font-weight:800}
-.nnav small{display:block;color:var(--muted);font-size:13px;text-transform:capitalize}
-.nl{display:flex;flex-direction:column;border-radius:24px;background:var(--glass);border:1px solid var(--edge);overflow:hidden}
-.tdi{display:flex;align-items:center;gap:12px;padding:12px 10px 12px 16px;border-top:1px solid var(--edge)}
-.tdi:first-child{border-top:0}
-.tdc{width:28px;height:28px;flex:none;border-radius:10px;border:2px solid rgba(255,255,255,.3);display:grid;place-items:center;transition:background .25s,border-color .25s,transform .3s var(--spring)}
+.shd{display:flex;align-items:center;justify-content:space-between}
+.sx{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid var(--edge);font-size:24px;line-height:1;color:var(--fg)}
+.ncard{border-radius:24px;padding:16px 16px 10px;margin-top:14px}
+.nhd{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.nhd b{font-size:17px;font-weight:800}
+.ncnt{font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.08);color:var(--muted)}
+.ncnt.all{background:color-mix(in srgb,var(--ok) 20%,transparent);color:var(--ok)}
+.tdi{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--edge)}
+.tdc{width:26px;height:26px;flex:none;border-radius:9px;border:2px solid rgba(255,255,255,.3);display:grid;place-items:center;transition:background .25s,border-color .25s,transform .3s var(--spring)}
 .tdc:active{transform:scale(.85)}
 .tdi.on .tdc{background:var(--ok);border-color:var(--ok)}
 .tdi.on .tdc::after{content:"";width:11px;height:6px;border:solid var(--ink);border-width:0 0 2.5px 2.5px;transform:translateY(-1px) rotate(-45deg)}
-.tdt{flex:1;font-size:16px;line-height:1.4;word-break:break-word}
+.tdt{flex:1;font-size:16px;line-height:1.4;word-break:break-word;transition:color .25s}
 .tdi.on .tdt{text-decoration:line-through;color:var(--muted)}
-.tdx{width:36px;height:36px;flex:none;border-radius:50%;color:var(--muted);font-size:20px}
-.nempty{padding:26px 16px;color:var(--muted);text-align:center;font-size:14px}
-.nadd{display:flex;gap:8px}
-.nadd input{flex:1;min-width:0;min-height:54px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid var(--edge);color:var(--fg);padding:0 16px;font:inherit;font-size:16px;outline:none}
-.nadd input:focus{border-color:var(--acc)}
-.nadd button{width:54px;flex:none;border-radius:18px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:28px;font-weight:700}
+.tdx{width:34px;height:34px;flex:none;border-radius:50%;color:var(--muted);font-size:20px;opacity:.55}
+.nadd{display:flex;align-items:center;gap:10px;border-top:1px solid var(--edge);padding-top:8px}
+.np{width:26px;text-align:center;color:var(--acc);font-size:22px;font-weight:700;flex:none}
+.nadd input{flex:1;min-width:0;min-height:44px;background:transparent;border:0;color:var(--fg);font:inherit;font-size:16px;outline:none}
+.nadd input::placeholder{color:var(--muted)}
+.nadd button{padding:0 14px;min-height:36px;border-radius:999px;background:var(--acc);color:var(--ink);font-weight:700;font-size:14px;flex:none}
 </style>
 
 <div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="wrap"><div class="top"><div><div class="eb" id="dt"></div><h1><svg class="logo" viewBox="0 0 32 24" aria-hidden="true"><path d="M1 22L11 6l5 8 4-5 11 13z" fill="url(#lg)"/><path d="M11 6l2.5 4-2.5 2-2.5-2z" fill="#fff" opacity=".9"/><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a98bff"/><stop offset="1" stop-color="#ff5fa2"/></linearGradient></defs></svg>TYT Kampı <button id="sync" class="sync local" aria-label="Senkron ayarları" onclick="connectSheet(false)"></button></h1></div><div class="wkpill" id="wp"></div></div><main id="main"></main></div>
-<nav id="nav"><span class="ind" id="ind"></span><button data-t="bugun" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Bugün</span></button><button data-t="hafta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Hafta</span></button><button data-t="soru"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span>Soru</span></button><button data-t="plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1.5 1.5L7.5 5M3.5 12l1.5 1.5 2.5-2.5M3.5 18l1.5 1.5 2.5-2.5"/></svg><span>Notlar</span></button></nav>
+<nav id="nav"><span class="ind" id="ind"></span><button data-t="bugun" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Bugün</span></button><button data-t="hafta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Hafta</span></button><button data-t="soru"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span>Soru</span></button></nav>
 <canvas id="fx"></canvas>
 <div class="toast" id="toast"></div>
 <script>
@@ -525,7 +525,7 @@ function qSheet(pre,opt={}){const seq=opt.seq||null;let si=0;const first=seq?seq
   requestAnimationFrame(()=>{ov.classList.add("on");sh.classList.add("on")});
   function close(){if(opt.onClose&&!finished)opt.onClose();ov.classList.remove("on");sh.classList.remove("on");document.body.style.overflow="";setTimeout(()=>{ov.remove();sh.remove()},450)}
   function draw(){const y=inn.scrollTop;inn.textContent="";const D_=qDraft;sh.style.setProperty("--dc",D_.ders?QD[D_.ders].c:"#a98bff");
-    inn.append(h("h2",null,opt.title||"Soru ekle"));
+    inn.append(h("div",{class:"shd"},h("h2",null,opt.title||"Soru ekle"),h("button",{class:"sx","aria-label":"Kapat",onclick:close},"×")));
     if(!seq)inn.append(h("div",{class:"dg"},QO.map(q=>h("button",{class:"dt","aria-pressed":D_.ders===q,style:"--dc:"+QD[q].c,onclick:()=>{D_.ders=q;D_.konu="";D_.ko=false;draw()}},dIco(q),h("span",null,QD[q].n)))));
     const nEl=h("b",{class:"num"},String(D_.n));
     const svT=()=>!D_.ders?"Ders seç":!D_.n?"Kaç soru çözdün?":"Kaydet · "+D_.n+" "+QD[D_.ders].n;
@@ -542,6 +542,9 @@ function qSheet(pre,opt={}){const seq=opt.seq||null;let si=0;const first=seq?seq
       burst(innerWidth/2,innerHeight*.7,[QD[D_.ders].c,"#fff","#a98bff"]);D_.n=0;draw()};
     const sv=h("button",{class:"save qsv",disabled:!(D_.ders&&D_.n),onclick:doSave},svT());
     inn.append(err,sv,h("p",{class:"hint"},"Kaydedince ders seçili kalır, sıradaki testi hemen girebilirsin."));inn.scrollTop=y}
+  let y0=null,dy=0;sh.addEventListener("touchstart",e=>{y0=inn.scrollTop<=0?e.touches[0].clientY:null;dy=0},{passive:true});
+  sh.addEventListener("touchmove",e=>{if(y0==null)return;dy=e.touches[0].clientY-y0;if(dy>0){sh.style.transition="none";sh.style.transform=`translateY(${dy}px)`}},{passive:true});
+  sh.addEventListener("touchend",()=>{if(y0==null)return;sh.style.transition="";sh.style.transform="";if(dy>90)close();y0=null});
   draw()}
 
 /* blok bitirirken soru sor */
@@ -557,7 +560,7 @@ function merge(a,b){const o={d:{...a.d},q:{...a.q},n:{...(a.n||{})}};for(const k
 function derive(){DB.n=DB.n||{};done=new Set(Object.keys(DB.d).filter(k=>DB.d[k].v));Q=Object.values(DB.q).filter(e=>!e.x)}
 function local(){lsSet("tytDB",DB);lsSet("tytDirty",dirty)}
 function setStatus(s){ghState=s;const e=$("#sync");if(!e)return;e.className="sync "+s;e.title={ok:"Senkron",wait:"Kaydediliyor",err:"Bağlantı yok, kayıtlar telefonda bekliyor",local:"Senkron kapalı"}[s]||""}
-function redrawAll(){sync();if(tab==="plan"&&document.activeElement?.tagName!=="INPUT")drawNotes();if(tab==="soru"&&!document.querySelector(".sheet")){drawQ(false);refreshHero()}}
+function redrawAll(){sync();if(tab==="bugun"&&document.activeElement?.tagName!=="INPUT")drawNotes();if(tab==="soru"&&!document.querySelector(".sheet")){drawQ(false);refreshHero()}}
 async function api(method,body){const r=await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${GH.file}`+(method==="GET"?"?t="+Date.now():""),{method,headers:{Authorization:"Bearer "+ghTok,Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"},body:body?JSON.stringify(body):undefined,cache:"no-store"});return r}
 async function pull(){if(!ghTok)return;const r=await api("GET");
   if(r.status===404){ghSha=null;return}
@@ -685,7 +688,7 @@ function vBugun(m){
   m.append(h("div",{id:"day",class:"view"}));drawDay(0)}
 function placeSel(strip,anim=true){const b=strip.querySelectorAll(".dd")[D],s=strip.querySelector(".sel");if(!b)return;if(!anim)s.style.transition="none";s.style.width=b.offsetWidth+"px";s.style.transform=`translateX(${b.offsetLeft}px)`;if(!anim)requestAnimationFrame(()=>s.style.transition="")}
 function pickDay(d){if(d===D)return;const dir=d>D?1:-1;D=d;openCard=-1;document.querySelectorAll(".dd").forEach((b,i)=>b.setAttribute("aria-pressed",String(i===D)));placeSel($(".strip"));drawDay(dir)}
-function drawDay(dir){const box=$("#day");box.textContent="";box.className="view"+(dir?" in"+(dir<0?" l":""):"");
+function drawDay(dir){setTimeout(drawNotes,0);const box=$("#day");box.textContent="";box.className="view"+(dir?" in"+(dir<0?" l":""):"");
   const isToday=W===nW&&D===nD,sl=slots(W,D),now=new Date(),m=now.getHours()*60+now.getMinutes();
   if(isToday)box.append(liveCard());
   else if(nW<0&&W===0&&D===0)box.append(h("div",{class:"glass now st",style:"--i:1;--dc:#b48cff"},h("small",null,"Geri sayım"),h("h2",null,Math.round((START-t0())/DAY)+" gün kaldı"),h("span",{class:"sub"},"2 Kasım Pazartesi 07:00'de paragraf ve problemle başlıyorsun.")));
@@ -708,7 +711,7 @@ function drawDay(dir){const box=$("#day");box.textContent="";box.className="view
       h("div",{class:"more"},h("div",null,h("p",null,nt+" · "+dur(mins(e)-mins(b))),
         h("div",{class:"btns"},s&&S[s].u&&tt===S[s].h?h("a",{class:"lnk",href:S[s].u,target:"_blank",rel:"noopener"},"Hocanın listesi ↗"):""))));
     wl.append(r)});
-  box.append(h("div",{class:"st lcol",style:"--i:2"},wl),h("p",{class:"hint st",style:"--i:9"},(D===6?"":"")+"Satıra dokun: ayrıntı · Daireye dokun: bitti · Kaydır: gün değiştir"));
+  box.append(h("div",{class:"st lcol",style:"--i:2"},wl),h("div",{class:"st",style:"--i:3"},h("div",{id:"notes"})),h("p",{class:"hint st",style:"--i:9"},(D===6?"":"")+"Satıra dokun: ayrıntı · Daireye dokun: bitti · Kaydır: gün değiştir"));
   let sx=null,sy=null;box.addEventListener("touchstart",e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
   box.addEventListener("touchend",e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;sx=null;if(Math.abs(dx)<70||Math.abs(dy)>Math.abs(dx))return;
     if(dx<0){if(D<6)pickDay(D+1);else if(W<WEEKS-1){W++;D=0;openCard=-1;show("bugun",1)}}else{if(D>0)pickDay(D-1);else if(W>0){W--;D=6;openCard=-1;show("bugun",-1)}}},{passive:true})}
@@ -751,27 +754,22 @@ let nT=null;
 function nAdd(day,tx){const t=Date.now(),id="n-"+t;DB.n[id]={id,day,tx,v:0,t,u:t};local();schedule()}
 function nSet(id,p){DB.n[id]={...DB.n[id],...p,u:Date.now()};local();schedule()}
 function dIco(s){const e=h("span",{class:"di","aria-hidden":"true"});e.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICO[s]||ICO.x}</svg>`;return e}
-function vPlan(m){if(nT==null){const x=new Date();x.setHours(12,0,0,0);nT=x.getTime()}m.append(h("div",{id:"notes",class:"nwrap"}));drawNotes()}
-function drawNotes(){const box=$("#notes");if(!box)return;box.textContent="";const k=dayKey(nT),dt=new Date(nT),today=dayKey(Date.now())===k;
+function drawNotes(){const old=$("#notes");if(!old)return;const k=dayKey(dateOf(W,D).getTime()+12*36e5);
   const L=Object.values(DB.n||{}).filter(e=>!e.x&&e.day===k).sort((a,b)=>a.t-b.t),dn=L.filter(e=>e.v).length;
-  const mv=x=>{nT+=x*DAY;drawNotes()};
-  box.append(h("div",{class:"nnav"},h("button",{"aria-label":"Önceki gün",onclick:()=>mv(-1)},"‹"),
-    h("div",null,h("small",null,today?"Bugün":dt.toLocaleDateString("tr-TR",{weekday:"long"})),h("h2",null,dt.toLocaleDateString("tr-TR",{day:"numeric",month:"long"}))),
-    h("button",{"aria-label":"Sonraki gün",onclick:()=>mv(1)},"›")));
-  if(L.length)box.append(h("div",{class:"dprog glass"},h("span",{class:"eb"},"Yapılacaklar"),h("span",{class:"bar"},h("i",{style:"width:"+Math.round(dn/L.length*100)+"%"})),h("span",{class:"num"},dn+"/"+L.length)));
-  const nl=h("div",{class:"nl"});
-  if(!L.length)nl.append(h("div",{class:"nempty"},"Bu güne not yok. Aşağıya yaz, + ile ekle."));
-  L.forEach(e=>nl.append(h("div",{class:"tdi"+(e.v?" on":"")},
-    h("button",{class:"tdc","aria-label":e.v?"Yapılmadı":"Yapıldı",onclick:()=>{nSet(e.id,{v:e.v?0:1});if(!e.v)burst(innerWidth/2,innerHeight*.5,["#3ddc84","#fff"]);drawNotes()}}),
+  const box=h("div",{id:"notes",class:"glass ncard"});
+  box.append(h("div",{class:"nhd"},h("b",null,"Günün notları"),L.length?h("span",{class:"ncnt"+(dn===L.length?" all":"")},dn+"/"+L.length):""));
+  L.forEach(e=>box.append(h("div",{class:"tdi"+(e.v?" on":"")},
+    h("button",{class:"tdc","aria-label":e.v?"Yapılmadı":"Yapıldı",onclick:ev=>{nSet(e.id,{v:e.v?0:1});if(!e.v){const r=ev.currentTarget.getBoundingClientRect();burst(r.left+14,r.top+14,["#3ddc84","#fff"])}drawNotes()}}),
     h("span",{class:"tdt"},e.tx),
     h("button",{class:"tdx","aria-label":"Sil",onclick:()=>{nSet(e.id,{x:1});drawNotes()}},"×"))));
-  const inp=h("input",{type:"text",placeholder:"Örn. Türev testi 1–2",enterkeyhint:"done",maxlength:"200",autocomplete:"off"});
+  const inp=h("input",{type:"text",placeholder:L.length?"Not ekle…":"Bugün ne yapacaksın? Yaz, ekle",enterkeyhint:"done",maxlength:"200",autocomplete:"off"});
   const add=()=>{const v=inp.value.trim();if(!v)return;nAdd(k,v);drawNotes();const ni=$("#notes input");if(ni)ni.focus()};
   inp.onkeydown=e=>{if(e.key==="Enter")add()};
-  box.append(nl,h("div",{class:"nadd"},inp,h("button",{"aria-label":"Ekle",onclick:add},"+")))}
+  box.append(h("div",{class:"nadd"},h("span",{class:"np"},"+"),inp,h("button",{"aria-label":"Ekle",onclick:add},"Ekle")));
+  old.replaceWith(box)}
 
 /* sekmeler */
-const VIEWS={bugun:vBugun,hafta:vHafta,plan:vPlan,soru:vSoru},TABS=["bugun","hafta","soru","plan"];
+const VIEWS={bugun:vBugun,hafta:vHafta,soru:vSoru},TABS=["bugun","hafta","soru"];
 function moveInd(){const b=$(`nav [data-t="${tab}"]`),ind=$("#ind");ind.style.width=b.offsetWidth+"px";ind.style.transform=`translateX(${b.offsetLeft-6}px)`}
 function show(t,dir){const prev=TABS.indexOf(tab);tab=t;if(dir==null)dir=TABS.indexOf(t)>=prev?1:-1;
   document.querySelectorAll("nav [data-t]").forEach(b=>b.dataset.t===t?b.setAttribute("aria-current","page"):b.removeAttribute("aria-current"));moveInd();
