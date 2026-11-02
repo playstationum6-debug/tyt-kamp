@@ -461,7 +461,7 @@ nav button[aria-current="page"] svg{color:var(--acc);filter:drop-shadow(0 0 8px 
 .tst small{color:var(--muted);font-size:12px}.tst b{font-size:22px;font-weight:800}
 .tcard{border-radius:24px;padding:16px;display:flex;flex-direction:column;gap:12px}
 .tch{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.tch b{font-size:17px;font-weight:800}.tch b:first-child{text-transform:capitalize}.tch small{color:var(--muted);font-size:12px}
+.tch b{font-size:17px;font-weight:800}.tch small{color:var(--muted);font-size:12px}
 .t7{position:relative;display:grid;grid-template-columns:repeat(7,1fr);gap:8px;height:150px;padding-top:18px}
 .t7 .gl{position:absolute;left:0;right:0;border-top:1.5px dashed rgba(255,255,255,.22);margin-bottom:22px;pointer-events:none}
 .tb{display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;padding:0}
@@ -514,6 +514,45 @@ nav button[aria-current="page"] svg{color:var(--acc);filter:drop-shadow(0 0 8px 
 @keyframes tw{to{opacity:.15}}
 .nt1{position:relative;display:flex;flex-direction:column;gap:4px}.nt1 small{color:#c9b8ff;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.nt1 b{font-size:20px;font-weight:800}
 .night .rg{position:relative}.night .rm{background:rgba(255,255,255,.08)}
+
+.kcard{gap:8px}
+.kbar{height:6px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden}
+.kbar i{display:block;height:100%;border-radius:3px;background:var(--dc,var(--ok));transition:width .8s var(--ease)}
+.kcard>.kbar i{background:var(--ok)}
+.krw{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--edge);animation:rmIn .5s var(--spring) both}
+.krw .dot{background:var(--dc)}
+.kn{flex:1;min-width:0;display:flex;flex-direction:column;font-size:15px;line-height:1.3}
+.kn small{color:var(--muted);font-size:12px}
+.krw.on .kn{color:var(--muted);text-decoration:line-through}
+.krw.on .tdc{background:var(--ok);border-color:var(--ok)}
+.krw.on .tdc::after{content:"";width:11px;height:6px;border:solid var(--ink);border-width:0 0 2.5px 2.5px;transform:translateY(-1px) rotate(-45deg)}
+.ktg{font-size:12px;font-weight:700;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.07);color:var(--muted);white-space:nowrap;flex:none}
+.ktg.late{background:color-mix(in srgb,#ff5f7a 18%,transparent);color:#ff8a9c;animation:kPulse 2s infinite}
+.ktg.now{background:color-mix(in srgb,var(--acc) 25%,transparent);color:var(--fg)}
+.ktg.ok{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+@keyframes kPulse{50%{opacity:.6}}
+.kmore{align-self:flex-start;font-size:13px;font-weight:700;color:var(--acc);padding:6px 0}
+.dcr{border-top:1px solid var(--edge);padding:10px 0;display:flex;flex-direction:column;gap:8px}
+.dch{display:flex;align-items:center;gap:12px;width:100%;text-align:left}
+.dch .di{width:36px;height:36px;flex:none;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--dc) 18%,transparent);color:var(--dc)}
+.dch .di svg{width:18px;height:18px}
+.dcn{flex:1;display:flex;flex-direction:column}.dcn b{font-size:15px;font-weight:700}.dcn small{color:var(--muted);font-size:12px}
+.chev{font-size:22px;color:var(--muted);transition:transform .35s var(--spring)}.dcr.op .chev{transform:rotate(90deg)}
+.ktl{position:relative;padding:4px 0 4px 6px;display:flex;flex-direction:column}
+.ktl::before{content:"";position:absolute;left:16px;top:16px;bottom:16px;width:2px;background:color-mix(in srgb,var(--dc) 30%,transparent)}
+.ktn{display:flex;align-items:center;gap:12px;padding:6px 0;animation:rmIn .45s var(--spring) both;position:relative}
+.kdot{width:22px;height:22px;flex:none;border-radius:50%;background:var(--card,#14112a);border:2.5px solid var(--dc);transition:background .3s,transform .3s var(--spring)}
+.kdot:active{transform:scale(.8)}
+.ktn.d .kdot{background:var(--dc)}
+.ktn.d .kn{color:var(--muted)}
+.ktn.nx .kdot{box-shadow:0 0 0 5px color-mix(in srgb,var(--dc) 30%,transparent);animation:kGlow 1.8s infinite}
+.ktn.nx .kn{font-weight:800}.ktn.nx .kn small{color:var(--dc);font-weight:700}
+.ktn.lt .kd{color:#ff8a9c}
+@keyframes kGlow{50%{box-shadow:0 0 0 9px color-mix(in srgb,var(--dc) 10%,transparent)}}
+.kd{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.lwarn{display:flex;flex-direction:column;align-items:flex-start;gap:3px;width:100%;text-align:left;border-radius:22px;padding:14px 16px;margin-bottom:12px;background:linear-gradient(135deg,rgba(255,95,122,.22),rgba(255,176,32,.12))!important;border:1px solid rgba(255,95,122,.35)!important}
+.lwarn b{font-size:17px;font-weight:800;color:#ff9aa9}.lwarn span{font-size:14px}.lwarn small{color:var(--muted);font-size:12px;margin-top:2px}
+h1{white-space:nowrap}
 </style>
 
 <div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -646,7 +685,7 @@ function qSheet(pre,opt={}){const seq=opt.seq||null;let si=0;const first=seq?seq
     if(D_.ders==="par"||D_.ders==="prb"){const t_=TM(),tdk=t_&&t_.ders===D_.ders?Math.max(1,Math.round(tmEl(t_)/6e4)):0;
       inn.append(h("div",{class:"fld"},h("span",{class:"eb"},"Kaç dakikada? · hız takibi için"),h("div",{class:"chips"},[20,30,40,45,60].map(v=>h("button",{class:"chip","aria-pressed":D_.dk===v,style:"--dc:"+QD[D_.ders].c,onclick:()=>{D_.dk=D_.dk===v?0:v;draw()}},v+" dk")),tdk?h("button",{class:"chip","aria-pressed":D_.dk===tdk,style:"--dc:"+QD[D_.ders].c,onclick:()=>{D_.dk=D_.dk===tdk?0:tdk;draw()}},"Sayaçtan · "+tdk+" dk"):null)))}
     if(D_.ders){if(!D_.ko&&!D_.konu)inn.append(h("button",{class:"kt",onclick:()=>{D_.ko=true;draw()}},h("span",null,"+ Konu ekle"),h("small",null,"isteğe bağlı")));
-      else{const used=[...new Set(Q.filter(e=>e.ders===D_.ders&&e.konu).sort((a,b)=>b.t-a.t).map(e=>e.konu))],opts=[...new Set([...used,...KONU[D_.ders]])];
+      else{const used=[...new Set(Q.filter(e=>e.ders===D_.ders&&e.konu).sort((a,b)=>b.t-a.t).map(e=>e.konu))],opts=[...new Set([...wkTopics(D_.ders),...used,...KONU[D_.ders]])];
         inn.append(h("div",{class:"fld"},h("span",{class:"eb"},"Konu · isteğe bağlı"),h("div",{class:"krow"},opts.map(k=>h("button",{class:"chip","aria-pressed":D_.konu===k,style:"--dc:"+QD[D_.ders].c,onclick:()=>{D_.konu=D_.konu===k?"":k;draw()}},k)))))}}
     const err=h("p",{class:"err",hidden:true});
     const doSave=async()=>{if(!D_.ders||!D_.n)return;sv.disabled=true;const t=Date.now(),e={id:"q-"+t,ders:D_.ders,konu:D_.konu,n:D_.n,t,day:opt.day||dayKey(t),...(D_.dk&&(D_.ders==="par"||D_.ders==="prb")?{dk:D_.dk}:{})};
@@ -807,6 +846,7 @@ function drawDay(dir){setTimeout(drawNotes,0);const box=$("#day");box.textConten
   const isToday=W===nW&&D===nD,sl=slots(W,D),now=new Date(),m=now.getHours()*60+now.getMinutes();
   if(isToday)box.append(liveCard());
   if(isToday&&now.getHours()>=22)box.append(nightCard());
+  if(isToday){const lt=lateTopics();if(lt.length>=2)box.append(h("button",{class:"glass lwarn st",style:"--i:1",onclick:()=>{HW=Math.max(0,nW);show("hafta")}},h("b",null,lt.length+" konu geride"),h("span",null,lt.slice(0,3).map(x=>x.name).join(", ")+(lt.length>3?"…":"")),h("small",null,"Konu takviminde gör →")))}
   else if(nW<0&&W===0&&D===0)box.append(h("div",{class:"glass now st",style:"--i:1;--dc:#b48cff"},h("small",null,"Geri sayım"),h("h2",null,Math.round((START-t0())/DAY)+" gün kaldı"),h("span",{class:"sub"},"2 Kasım Pazartesi 07:00'de paragraf ve problemle başlıyorsun.")));
   const st=dayState(W,D);
   if(st.t)box.append(h("div",{class:"dprog st glass",id:"dprog",style:"--i:1"},h("span",{class:"eb"},W===nW&&D===nD?"Bugün":dateOf(W,D).toLocaleDateString("tr-TR",{weekday:"long"})),h("span",{class:"bar"},h("i",{style:"width:0"})),h("span",{class:"num"},st.n+"/"+st.t)));
@@ -821,7 +861,7 @@ function drawDay(dir){setTimeout(drawNotes,0);const box=$("#day");box.textConten
     r.append(h("div",{class:"rmain"},
       h("button",{class:"main","aria-expanded":String(openCard===i),onclick:tgl},
         ico(s),
-        h("span",{class:"tx"},h("b",null,s?S[s].n:tt),h("span",null,b+"–"+e+(s?" · "+tt:""))),
+        h("span",{class:"tx"},h("b",null,s?S[s].n:tt),h("span",null,b+"–"+e+(s?" · "+(konuTxt(s,W,D)||tt):""))),
         on?h("span",{class:"lv"},"şimdi"):""),
       h("button",{class:"ck","aria-label":(s?S[s].n:tt)+" bitti olarak işaretle",onclick:()=>askDone(k)})),
       h("div",{class:"more"},h("div",null,h("p",null,nt+" · "+dur(mins(e)-mins(b))),
@@ -863,7 +903,7 @@ function wsum(w){const svg=ring(wkFrac(w),76,31,8,"var(--ok)","rgba(255,255,255,
       h("div",{class:"wbars"},GUN.map((g,d)=>{const st=dayState(w,d);return h("div",{class:"wb"},h("span",{class:"wbt"},h("i",{style:"height:"+Math.round(st.n/st.t*100)+"%"})),h("small",null,g))}))))}
 function pickWeek(w,noScroll){if(w===HW)return;const dir=w>HW?1:-1;HW=w;document.querySelectorAll(".wcard").forEach((c,i)=>c.classList.toggle("sel",i===HW));
   const car=$(".car"),c=car.children[HW];if(!noScroll)car.scrollTo({left:c.offsetLeft-(car.clientWidth-c.offsetWidth)/2,behavior:"smooth"});drawGoals(dir)}
-function drawGoals(dir){const g=$("#goals");g.textContent="";g.className="view"+(dir?" in"+(dir<0?" l":""):"");g.append(repCard(HW),wsum(HW),hizCard(HW));sync();animIn(g)}
+function drawGoals(dir){const g=$("#goals");g.textContent="";g.className="view"+(dir?" in"+(dir<0?" l":""):"");g.append(repCard(HW),konuCard(HW),wsum(HW),dersCal(),hizCard(HW));sync();animIn(g)}
 
 /* NOTLAR: günün yapılacakları */
 let nT=null;
@@ -946,7 +986,7 @@ function drawTm(){const old=$("#tm");if(!old)return;const t=TM(),tk=todayK(),box
   box.append(h("div",{class:"glass tcard"},h("div",{class:"tch"},h("b",null,"Son 7 gün"),h("small",null,"Kesikli çizgi: 8 saat")),
     h("div",{class:"t7"},h("i",{class:"gl",style:"bottom:"+(GOAL/mx*100)+"%"}),d7.map(k=>{const ms=dayMs(k),dd=new Date(k+"T12:00");return h("button",{class:"tb"+(k===selDay?" sel":"")+(ms>=GOAL?" hit":""),onclick:()=>{selDay=k;drawTm()}},h("span",{class:"tv"},ms?(ms/36e5).toFixed(1):""),h("span",{class:"tc"},h("i",{style:"height:"+Math.max(2,ms/mx*100)+"%"})),h("small",null,GUN[(dd.getDay()+6)%7]))}))));
   const sd=new Date(selDay+"T12:00"),bd=byDers(selDay),tot=bd.reduce((a,x)=>a+x[1],0);
-  box.append(h("div",{class:"glass tcard"},h("div",{class:"tch"},h("b",null,selDay===tk?"Bugün":sd.toLocaleDateString("tr-TR",{weekday:"long",day:"numeric",month:"long"})),h("b",{class:"num"},fmtD(tot))),
+  box.append(h("div",{class:"glass tcard"},h("div",{class:"tch"},h("b",null,selDay===tk?"Bugün":cap(sd.toLocaleDateString("tr-TR",{weekday:"long",day:"numeric",month:"long"}))),h("b",{class:"num"},fmtD(tot))),
     tot?h("div",{class:"tsb"},bd.map(([q,ms])=>h("i",{style:`flex:${ms};background:${QD[q].c}`}))):h("p",{class:"nempty"},"Bu gün kayıt yok."),
     tot?h("div",{class:"tlg"},bd.map(([q,ms])=>h("span",null,h("span",{class:"dot",style:"--dc:"+QD[q].c}),QD[q].n+" "+fmtD(ms)))):null,
     ...sesOf(selDay).map(e=>h("div",{class:"tsr",style:"--dc:"+QD[e.ders].c},nIco(e.ders),h("div",{class:"tdt"},h("span",null,QD[e.ders].n),h("small",null,new Date(e.a).toLocaleTimeString("tr-TR",{hour:"2-digit",minute:"2-digit"})+(e.man?" · elle eklendi":"–"+new Date(e.b).toLocaleTimeString("tr-TR",{hour:"2-digit",minute:"2-digit"})))),h("b",{class:"num"},fmtD(e.ms)),h("button",{class:"tdx","aria-label":"Sil",onclick:()=>{DB.s[e.id]={...e,x:1,u:Date.now()};local();schedule();drawTm()}},"×"))),
@@ -1007,6 +1047,44 @@ function nightCard(){const k=todayK(),ms=dayMs(k),q=Q.filter(e=>e.day===k).reduc
   const el=h("div",{class:"glass night st",style:"--i:1"},h("div",{class:"stars"}),h("div",{class:"nt1"},h("small",null,"Günün özeti"),h("b",null,msg)),
     h("div",{class:"rg"},[["Çalışma",ms+"|h"],["Soru",q+"|n"],["Hedef",N.length?nd+"/"+N.length:"—"],["Blok",st.n+"/"+st.t]].map(([a,b])=>h("div",{class:"rm"},h("small",null,a),/\|/.test(b)?h("b",{class:"num","data-an":b},"0"):h("b",{class:"num"},b)))));
   setTimeout(()=>animIn(el),50);if(ms>=GOAL)setTimeout(()=>burst(innerWidth/2,200,["#ffd166","#a98bff","#fff"]),700);return el}
+
+/* KONU TAKVİMİ */
+const cap=x=>x.charAt(0).toLocaleUpperCase("tr-TR")+x.slice(1);
+const TOPS={};
+function topicsOf(s_){if(TOPS[s_])return TOPS[s_];const T=KONU[s_]||[],L=SES[s_]||[],n=L.length,m=T.length;
+  return TOPS[s_]=m&&n?T.map((name,i)=>{const a=Math.min(n-1,Math.floor(i*n/m)),b=Math.max(a,Math.min(n-1,Math.ceil((i+1)*n/m)-1));return{s:s_,i,name,a,b,due:L[b],k:"k-"+s_+"-"+i}}):[]}
+const todayIdx=()=>nW*7+nD;
+const kDone=t=>done.has(t.k);
+function konuTxt(s_,w,d){const k=(SES[s_]||[]).indexOf(w*7+d);if(k<0)return"";const T=topicsOf(s_).filter(t=>t.a<=k&&k<=t.b);if(!T.length)return"";return T.length>1?T[0].name+" → "+T[T.length-1].name:T[0].name}
+function wkTopics(s_){const w=Math.max(0,Math.min(WEEKS-1,nW));return topicsOf(s_).filter(t=>Math.floor(t.due/7)===w||(t.due<todayIdx()&&!kDone(t))).map(t=>t.name)}
+function lateTopics(){const ti=todayIdx();return ORDER.flatMap(topicsOf).filter(t=>t.due<ti&&!kDone(t))}
+function kToggle(t,el){const on=!kDone(t);on?done.add(t.k):done.delete(t.k);save(t.k,on);if(on&&el){const r=el.getBoundingClientRect();burst(r.left+12,r.top+12,[S[t.s].c,"#fff"])}}
+function dueTag(t){const ti=todayIdx(),dd=t.due-ti,dt=dateOf(Math.floor(t.due/7),t.due%7);
+  if(kDone(t))return h("span",{class:"ktg ok"},"bitti");if(dd<0)return h("span",{class:"ktg late"},(-dd)+" gün geride");if(dd===0)return h("span",{class:"ktg now"},"bugün");
+  return h("span",{class:"ktg"},dd<7?GUN[t.due%7]+"'e kadar":fmt(dt))}
+let kAll=false;
+function konuCard(w){const ti=todayIdx(),L=ORDER.flatMap(topicsOf).filter(t=>Math.floor(t.due/7)===w||(w===nW&&t.due<w*7&&!kDone(t))).sort((a,b)=>(kDone(a)-kDone(b))||a.due-b.due);
+  const dn=L.filter(kDone).length,card=h("div",{class:"glass rep kcard st",style:"--i:1"});
+  const draw=()=>{card.textContent="";const L2=L.slice().sort((a,b)=>(kDone(a)-kDone(b))||a.due-b.due),dn2=L2.filter(kDone).length;
+    card.append(h("div",{class:"tch"},h("b",null,"Bu hafta "+L2.length+" konu"),h("small",null,dn2+" bitti")),h("div",{class:"kbar"},h("i",{style:"width:"+(L2.length?dn2/L2.length*100:0)+"%"})));
+    if(!L2.length)card.append(h("p",{class:"nempty"},"Bu hafta bitecek konu yok, soru çözümü haftası."));
+    (kAll?L2:L2.slice(0,7)).forEach((t,i)=>card.append(h("div",{class:"krw"+(kDone(t)?" on":""),style:"--dc:"+S[t.s].c+";animation-delay:"+(i*.04)+"s"},
+      h("button",{class:"tdc","aria-label":t.name+(kDone(t)?" bitmedi":" bitti"),onclick:ev=>{kToggle(t,ev.currentTarget);draw()}}),
+      h("span",{class:"dot"}),h("span",{class:"kn"},t.name,h("small",null,S[t.s].n)),dueTag(t))));
+    if(L2.length>7)card.append(h("button",{class:"kmore",onclick:()=>{kAll=!kAll;draw()}},kAll?"Daha az göster":"+"+(L2.length-7)+" konu daha"))};
+  draw();return card}
+let kOpen=null;
+function dersCal(){const card=h("div",{class:"glass rep st",style:"--i:3"});
+  const draw=()=>{card.textContent="";card.append(h("div",{class:"tch"},h("b",null,"Konu takvimi"),h("small",null,"Videolara göre tahmini")));
+    ORDER.forEach(s_=>{const T=topicsOf(s_);if(!T.length)return;const dn=T.filter(kDone).length,end=T[T.length-1].due,op=kOpen===s_,ti=todayIdx(),nx=T.find(t=>!kDone(t));
+      const row=h("div",{class:"dcr"+(op?" op":""),style:"--dc:"+S[s_].c},
+        h("button",{class:"dch","aria-expanded":String(op),onclick:()=>{kOpen=op?null:s_;draw()}},nIco(s_),h("span",{class:"dcn"},h("b",null,S[s_].n),h("small",null,dn+" / "+T.length+" konu · "+fmt(dateOf(Math.floor(end/7),end%7))+"'de biter")),h("span",{class:"chev"},"›")),
+        h("div",{class:"kbar"},h("i",{style:"width:"+(dn/T.length*100)+"%"})));
+      if(op)row.append(h("div",{class:"ktl"},T.map((t,i)=>h("div",{class:"ktn"+(kDone(t)?" d":"")+(t===nx?" nx":"")+(!kDone(t)&&t.due<ti?" lt":""),style:"animation-delay:"+(i*.03)+"s"},
+        h("button",{class:"kdot","aria-label":t.name+(kDone(t)?" bitmedi":" bitti"),onclick:ev=>{kToggle(t,ev.currentTarget);draw()}}),
+        h("span",{class:"kn"},t.name,t===nx?h("small",null,"sıradaki"):null),h("span",{class:"kd"},fmt(dateOf(Math.floor(t.due/7),t.due%7)))))));
+      card.append(row)})};
+  draw();return card}
 
 /* sekmeler */
 const VIEWS={bugun:vBugun,hafta:vHafta,sayac:vSayac,soru:vSoru},TABS=["bugun","hafta","sayac","soru"];
