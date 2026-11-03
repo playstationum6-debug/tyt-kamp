@@ -612,10 +612,10 @@ h1{white-space:nowrap}
 const yt=q=>"https://www.youtube.com/results?search_query="+encodeURIComponent(q);
 /* N: izlenecek video (tanıtımlar hariç), E: son hafta (0'dan), u: liste */
 const S={
- mat:{n:"Matematik",h:"Eyüp B.",c:"#7b93ff",N:189,E:6,u:yt("Eyüp Boncuk TYT Matematik Video Dersler"),birim:"video",sonra:"Soru çözümü · 2. kitap"},
- geo:{n:"Geometri",h:"Eyüp B.",c:"#b48cff",N:28,E:3,u:"https://youtube.com/playlist?list=PLto0Y-Oz3y1of5PHEoL9WTJaGaoi4CyCW",birim:"video",sonra:"Soru çözümü · 2. kitap"},
- fiz:{n:"Fizik",h:"Altuğ Güneş",c:"#2ec4b6",N:121,E:7,u:yt("Altuğ Güneş 45 günde TYT fizik tarz kampı 2027"),birim:"ders",sonra:"Karma test · yanlış defteri"},
- kim:{n:"Kimya",h:"Ferrum",c:"#ffb020",N:92,E:7,u:yt("Ferrum 2027 TYT kimya kampı"),birim:"video",sonra:"Karma test · yanlış defteri"},
+ mat:{n:"Matematik",h:"Eyüp B.",c:"#7b93ff",N:189,E:6,u:"https://youtube.com/playlist?list=PLyiXTl2rW_wrvZYVh9-A5pHeVhF4xdeO4",birim:"video",sonra:"Soru çözümü · 2. kitap"},
+ geo:{n:"Geometri",h:"Eyüp B.",c:"#b48cff",N:28,E:3,u:"https://youtube.com/playlist?list=PLto0Y-Oz3y1rHk-lS55PnDuorYyUvIO0E",birim:"video",sonra:"Soru çözümü · 2. kitap"},
+ fiz:{n:"Fizik",h:"Altuğ Güneş",c:"#2ec4b6",N:121,E:7,u:"https://youtube.com/playlist?list=PLjMK0Mww73Cc4v8HI329cVSd7U4cMAEVZ",birim:"ders",sonra:"Karma test · yanlış defteri"},
+ kim:{n:"Kimya",h:"Ferrum",c:"#ffb020",N:92,E:7,u:"https://youtube.com/playlist?list=PLB0hn7Hw33ssbcLtCDjnzgIWIALTQH-Mn",birim:"video",sonra:"Karma test · yanlış defteri"},
  bio:{n:"Biyoloji",h:"Dr. Biyoloji",c:"#4cc26a",N:56,E:9,u:yt("Dr. Biyoloji YKS 2027 TYT konu anlatım kampı"),birim:"ders",sonra:"Karma test · yanlış defteri"},
  tr:{n:"Türkçe",h:"Emek Taştan",c:"#ff8a65",N:41,E:10,u:"https://youtube.com/playlist?list=PLVsjxq1KrcgzyfIp2GPiyxQgbg7Xi_nHz",birim:"video",sonra:"Paragraf · karma test"},
  cog:{n:"Coğrafya",h:"Coğrafyanın Kodları",c:"#3fa7ff",N:58,E:10,u:yt("Coğrafyanın Kodları 39 günde TYT coğrafya ayrıntılı kampı 2027"),birim:"video",sonra:"Karma test · yanlış defteri"},
@@ -1173,7 +1173,7 @@ const VID={"mat":[1575,1627,1121,703,1811,1558,1329,1522,2121,728,1653,2347,1196
 
 delete VID.geo;
 const VAPX={};[["tr",41],["cog",58],["tar",21]].forEach(([k,n])=>{if(!VID[k]){VID[k]=Array(n).fill(900);VAPX[k]=1}});
-const PL={tr:"PLVsjxq1KrcgzyfIp2GPiyxQgbg7Xi_nHz"};
+const PL={tr:"PLVsjxq1KrcgzyfIp2GPiyxQgbg7Xi_nHz",mat:"PLyiXTl2rW_wrvZYVh9-A5pHeVhF4xdeO4",geo:"PLto0Y-Oz3y1rHk-lS55PnDuorYyUvIO0E",fiz:"PLjMK0Mww73Cc4v8HI329cVSd7U4cMAEVZ",kim:"PLB0hn7Hw33ssbcLtCDjnzgIWIALTQH-Mn"};
 let ytReady=null;function ytApi(){if(ytReady)return ytReady;ytReady=new Promise(r=>{window.onYouTubeIframeAPIReady=r;const sc=document.createElement("script");sc.src="https://www.youtube.com/iframe_api";document.head.append(sc)});return ytReady}
 function playSheet(s_,i){const ov=h("div",{class:"ov"}),sh=h("div",{class:"sheet",role:"dialog","aria-modal":"true","aria-label":"Video"}),inn=h("div",{class:"in"});
   sh.append(h("button",{class:"grab","aria-label":"Kapat",onclick:close}),inn);document.body.append(ov,sh);requestAnimationFrame(()=>{ov.classList.add("on");sh.classList.add("on")});ov.onclick=close;
@@ -1182,7 +1182,7 @@ function playSheet(s_,i){const ov=h("div",{class:"ov"}),sh=h("div",{class:"sheet
   inn.append(h("div",{class:"shd"},h("div",null,h("div",{class:"eb"},S[s_].n+" · "+S[s_].h),h("h2",null,(i+1)+". video")),h("button",{class:"sx","aria-label":"Kapat",onclick:close},"×")),box,
     h("p",{class:"hint"},"Hızı oynatıcıdaki ayarlardan 1,5x yap. Bitince videonun yanındaki kutuyu tikle."));
   ytApi().then(()=>{pl=new YT.Player("ytp",{width:"100%",height:"100%",playerVars:{playsinline:1,rel:0},events:{onReady:e=>{e.target.cuePlaylist({listType:"playlist",list:PL[s_],index:(VIDX[s_]?VIDX[s_][i]:i)})}}})})}
-const VIDX={};
+const VIDX={"mat":[1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,22,23,24,25,26,28,29,30,31,32,33,34,35,36,37,38,40,41,42,43,44,45,46,47,48,49,50,51,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,155,156,157,158,160,161,162,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,182,183,184,185,186,188,189,190,191,192,194,195,196,197,198,199,200,201,202,203],"fiz":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110],"kim":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,35,36,37,38,39,40,41,42,43,44,45,46,48,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,67,68,69,70,71,72,73,74,76,77,78,79,80,81,82,83,84,85,86,87,88]};
 /* GEOMETRİ 20 GÜN KAMPI */
 const GEO20=["Doğruda açı konu anlatımı + Öğreniyorum testleri","Çıkmış ve çıkabilecek sorular","Üçgende açı konu anlatımı","Öğreniyorum testleri","Çıkmış ve çıkabilecek sorular","Dik üçgen konu anlatımı","İkizkenar üçgen tüm konu + testler","Eşkenar üçgen tüm konu + testler","Üçgende açıortay konu + Öğreniyorum testleri","Çıkmış ve çıkabilecek sorular","Üçgende kenarortay tüm konu + testler","Üçgende benzerlik 1 + Öğreniyorum test 1","Üçgende benzerlik 2-3-4 + Öğreniyorum test 2","Çıkmış sorular tarzında","Çıkabilecek tarzda sorular","Üçgende alan 1 ve 2","Üçgende alan 3-4","Öğreniyorum testleri + çıkmış sorular tarzında","Çıkabilecek tarzda sorular","Üçgende açı kenar bağıntıları tamamı"];
 const gKey=i=>"g-"+i,gOn=i=>!!DB.d[gKey(i)]?.v;
@@ -1195,7 +1195,7 @@ function geoTxt(w,d){const G=geoDays(w,d);if(!G.length)return w*7+d<todayIdx()?"
 function geoList(w,d,redraw){const G=geoDays(w,d);if(!G.length)return"";const isT=w*7+d===todayIdx(),last=G[G.length-1];
   let nx=-1;if(isT&&gOn(last)){for(let i=last+1;i<GEO20.length;i++)if(!gOn(i)){nx=i;break}}
   const row=(i,extra)=>{const on=gOn(i);return h("button",{class:"vrow"+(on?" on":""),onclick:ev=>{ev.stopPropagation();DB.d[gKey(i)]={v:on?0:1,t:Date.now()};local();schedule();if(!on){const r=ev.currentTarget.getBoundingClientRect();burst(r.left+20,r.top+16,[S.geo.c,"#fff"]);toast(i===19?"Geometri kampı bitti!":(i+1)+". gün tamam")}redraw()}},
-    h("span",{class:"vck"}),h("span",{class:"vn"},(extra?"Sıradakini de bitirdim · ":"")+(i+1)+". gün"),h("span",{class:"vd",style:"white-space:normal;text-align:right;max-width:55%"},GEO20[i]))};
+    h("span",{class:"vck"}),h("span",{class:"vn"},(extra?"Sıradakini de bitirdim · ":"")+(i+1)+". gün"),h("span",{class:"vplay",role:"button","aria-label":"İzle",onclick:ev=>{ev.stopPropagation();playSheet("geo",Math.round(i*30/20))}},"▶"),h("span",{class:"vd",style:"white-space:normal;text-align:right;max-width:55%"},GEO20[i]))};
   return h("div",{class:"vl"},G.map(i=>row(i)),nx>=0?row(nx,true):null,h("small",{class:"muted",style:"font-size:12px"},(GEO20.filter((x,i)=>gOn(i)).length)+" / 20 gün bitti"))}
 
 /* VİDEO PLANI: gün gün hangi video */
