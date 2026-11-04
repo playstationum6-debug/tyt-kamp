@@ -1577,6 +1577,7 @@ BLOK_USD = float(os.getenv("BLOK_USD", "25000"))      # tek işlemde bu kadar $ 
 AKIS_MIN = int(os.getenv("AKIS_MIN", "45"))           # kırılım anında son 2 dk alım payı bunun altındaysa KIRDI kanala gitmez (0 = kapalı)
 KOTE = {}            # sembol -> (alış, satış, ts)  IEX en iyi alış/satış
 KK = {"kayit": [], "alarm": [], "float": {}, "gon": {}, "sahip": "", "tgplan": {}, "cizgi": [], "tahmin": [], "gece": [], "short": {}}
+SURUM = "4 Kasım · gece puanı + erken seviye"   # /saglik'te görünür: doğru dosya yüklendi mi
 KOMISYON = float(os.getenv("KOMISYON", "1.5"))     # satış başına broker komisyonu ($)
 YEDEK_ACIL = [0]     # plan mesajı gitti: 2 dk içinde yedekle (yeniden başlamada aynı plan tekrar gitmesin)   # kanal ekleri: kırılım karnesi, fiyat alarmı, float, gönderim izleri
 SPREAD_MAX = float(os.getenv("SPREAD_MAX", "2.0"))   # % üstü: plan mesajı gönderilmez (kayma riski)
@@ -8422,6 +8423,25 @@ def takip_key(sym):
     return h["key"] if h else None
 
 
+def plan_temizle():
+    """Gün değişince (ET) önceki günün bekleyen planlarını sil: TAKİBİMDE ve takip listesi sadece bugünkü seviyeleri görsün."""
+    gun = _gun_et()
+    n = 0
+    for sym, p in list(PLAN.planlar.items()):
+        if p.get("gun") and p["gun"] != gun:
+            p["st"], p["neden"], p["bitis"] = "süre", "gün bitti (eski plan temizlendi)", time.time()
+            PLAN.planlar.pop(sym, None)
+            PLAN.gecmis.append(p)
+            n += 1
+    for sym, r in list(PLAN.retest.items()):
+        if (r.get("p") or {}).get("gun") != gun:
+            PLAN.retest.pop(sym, None)
+    if n:
+        del PLAN.gecmis[:-300]
+        backup.dirty = True
+        log.info("Eski plan temizliği: %d plan silindi", n)
+
+
 def takibim_kontrol():
     """Kaliteli hisse kırılım seviyesine yaklaşınca tek mesaj: '📌 TAKİBİMDE · X kırarsa giriş'. KIRDI bu mesaja yanıt gelir."""
     if TAKIBIM_SEANS <= 0 or not tg.ok or KANAL_MOD != "onay":
@@ -8444,7 +8464,7 @@ def takibim_kontrol():
         return
     aday = []
     for sym, p in list(PLAN.planlar.items()):
-        if p.get("st") != "bekliyor" or sym in T["h"] or sym in SYMBOLS or sym in planmod.HARIC or sustur_mu(sym):
+        if p.get("st") != "bekliyor" or p.get("gun") != T["gun"] or sym in T["h"] or sym in SYMBOLS or sym in planmod.HARIC or sustur_mu(sym):
             continue
         if p["giris"] > PLAN_MAX_FIYAT > 0 or (spread_yuzde(sym) or 0) > _spr_max(p) or gec_kapi(sym):
             continue
@@ -9939,7 +9959,8 @@ def saglik_satirlari():
     dun = sorted(k for k in SAGLIK["plan"] if k < gun)[-1:] or [None]
     o = karne_ozet(dun[0]) if dun[0] else None
     bas_bugun = sum(1 for t in backup.data.get("starts", []) if t >= time.time() - 86400)
-    return [f"{'✅' if state.iex == 'bağlı' else '⚠️'} Alpaca IEX: {state.iex} · {len(akis_semboller())} hisse canlı",
+    return [f"🏷️ Sürüm: {SURUM}",
+            f"{'✅' if state.iex == 'bağlı' else '⚠️'} Alpaca IEX: {state.iex} · {len(akis_semboller())} hisse canlı",
             f"{'✅' if FINN['durum'] == 'bağlı' else '➖'} Finnhub: {FINN['durum']}" + (f" · {len(FINN['abone'])} hisse" if FINN["abone"] else ""),
             f"{'✅' if not state.sip_err else '⚠️'} Öncesi/sonrası hacim: " + (f"SIP hata ({state.sip_err[:50]})" if state.sip_err else
                 f"SIP ✓ ({state.sip_n} mum)" if state.sip_last else "SIP bekleniyor") + f" · Finnhub {len(FVOL)} hisse",
@@ -10929,6 +10950,10 @@ async def kanal_loop():
             erken_izle()
         except Exception as e:
             log.warning("Erken giriş izleme hatası: %s", e)
+        try:
+            plan_temizle()
+        except Exception as e:
+            log.warning("Plan temizliği hatası: %s", e)
         try:
             takibim_kontrol()
         except Exception as e:

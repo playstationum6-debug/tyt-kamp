@@ -494,8 +494,8 @@ class Planci:
         ix = eng._index(tss, bars)
         day = ix["days"][k]
         ds = ix["start"][day]
-        if k - ds < 20 or x["ses"] == "closed":
-            return []
+        if k - ds < (3 if x["ses"] == "pre" else 20) or x["ses"] == "closed":
+            return []                                   # öncesi seans: 3. dakikadan itibaren (dünkü tepe, çok günlük direnç, yuvarlak sayı hazır)
         x["_ix"] = ix
         self._et = eng.ET
         p = self.planlar.get(sym)
