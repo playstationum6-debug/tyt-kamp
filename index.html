@@ -601,11 +601,30 @@ h1{white-space:nowrap}
 .nwr .di{width:34px;height:34px;flex:none;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--dc) 18%,transparent);color:var(--dc)}
 .nwr .di svg{width:18px;height:18px}
 .nwr .tdt span{font-weight:700;font-size:15px}
+
+.bigt{position:fixed;inset:0;z-index:60;background:var(--bg);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 12px) 12px calc(env(safe-area-inset-bottom,0px) + 8px);opacity:0;transform:scale(.98);transition:opacity .3s,transform .35s var(--spring)}
+.bigt.on{opacity:1;transform:none}
+.bgh{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:4px 4px 10px}
+.bgh b{display:block;font-size:22px;font-weight:800}.bgh small{color:var(--muted);font-size:13px}
+.bgw{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;border-radius:18px;border:1px solid var(--edge)}
+.bgtb{border-collapse:separate;border-spacing:4px;width:100%;min-width:1000px;font-size:13px}
+.bgtb th{position:sticky;top:0;z-index:2;background:var(--bg);text-align:left;padding:10px 8px;font-weight:800;font-size:14px;white-space:nowrap}
+.bgtb th .dot{background:var(--dc);margin-right:6px}
+.bgtb td{vertical-align:top;padding:6px;border-radius:12px;background:color-mix(in srgb,var(--dc,#fff) 7%,rgba(255,255,255,.03));min-width:110px}
+.bgtb .kw{position:sticky;left:0;z-index:1;background:var(--bg);min-width:84px;white-space:nowrap}
+.bgtb th.kw{z-index:3}
+.bgtb td.kw b{display:block;font-size:14px}.bgtb td.kw small{color:var(--muted);font-size:11px}
+.bgtb tr.cur td:not(.kw){box-shadow:inset 0 0 0 2px var(--acc)}
+.bgtb tr.cur td.kw b{color:var(--acc)}
+.bgtb tr.past td:not(.kw){opacity:.75}
+.bgtb .kc{font-size:13px;padding:6px 8px}
+.bgf{color:var(--muted);font-size:12px;text-align:center;padding-top:8px}
+@media (min-width:1024px){.bgtb{font-size:14px}.bgtb .kc{font-size:14px}}
 </style>
 
 <div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="wrap"><div class="top"><div><div class="eb" id="dt"></div><h1><svg class="logo" viewBox="0 0 32 24" aria-hidden="true"><path d="M1 22L11 6l5 8 4-5 11 13z" fill="url(#lg)"/><path d="M11 6l2.5 4-2.5 2-2.5-2z" fill="#fff" opacity=".9"/><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a98bff"/><stop offset="1" stop-color="#ff5fa2"/></linearGradient></defs></svg>TYT Kampı <button id="sync" class="sync local" aria-label="Senkron ayarları" onclick="connectSheet(false)"></button></h1></div><div class="wkpill" id="wp"></div></div><main id="main"></main></div>
-<nav id="nav"><span class="ind" id="ind"></span><button data-t="bugun" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Bugün</span></button><button data-t="hafta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Hafta</span></button><button data-t="sayac"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6M19 5l1.5 1.5"/></svg><span>Sayaç</span></button><button data-t="soru"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span>Soru</span></button></nav>
+<nav id="nav"><span class="ind" id="ind"></span><button data-t="bugun" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Bugün</span></button><button data-t="hafta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Hafta</span></button><button id="tbBtn" onclick="bigTable()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16M15 4v16"/></svg><span>Tablo</span></button><button data-t="sayac"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6M19 5l1.5 1.5"/></svg><span>Sayaç</span></button><button data-t="soru"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V10M12 20V4M19 20v-7"/></svg><span>Soru</span></button></nav>
 <canvas id="fx"></canvas>
 <div class="toast" id="toast"></div>
 <script>
@@ -1101,10 +1120,10 @@ function nightCard(){const k=todayK(),ms=dayMs(k),q=Q.filter(e=>e.day===k).reduc
 /* KONU TAKVİMİ */
 const cap=x=>x.charAt(0).toLocaleUpperCase("tr-TR")+x.slice(1);
 const TOPS={};
-function topicsOf(s_){if(TOPS[s_])return TOPS[s_];const T=KONU[s_]||[],L=SES[s_]||[],n=L.length,m=T.length;
+function topicsOf(s_){if(TOPS[s_])return TOPS[s_];if(s_==="geo"){const G=geoAll();return TOPS.geo=GEO20.map((name,i)=>({s:"geo",i,name:(i+1)+". gün · "+name,a:i,b:i,due:G[i],k:gKey(i)}))}const T=KONU[s_]||[],L=SES[s_]||[],n=L.length,m=T.length;
   return TOPS[s_]=m&&n?T.map((name,i)=>{const a=Math.min(n-1,Math.floor(i*n/m)),b=Math.max(a,Math.min(n-1,Math.ceil((i+1)*n/m)-1));return{s:s_,i,name,a,b,due:L[b],k:"k-"+s_+"-"+i}}):[]}
 const todayIdx=()=>nW*7+nD;
-const kDone=t=>done.has(t.k);
+const kDone=t=>!!DB.d[t.k]?.v;
 function konuTxt(s_,w,d){const k=(SES[s_]||[]).indexOf(w*7+d);if(k<0)return"";const T=topicsOf(s_).filter(t=>t.a<=k&&k<=t.b);if(!T.length)return"";return T.length>1?T[0].name+" → "+T[T.length-1].name:T[0].name}
 function wkTopics(s_){const w=Math.max(0,Math.min(WEEKS-1,nW));return topicsOf(s_).filter(t=>Math.floor(t.due/7)===w||(t.due<todayIdx()&&!kDone(t))).map(t=>t.name)}
 function lateTopics(){const ti=todayIdx();return ORDER.flatMap(topicsOf).filter(t=>t.due<ti&&!kDone(t))}
@@ -1235,6 +1254,21 @@ function nextWeekCard(w){const rows=[];
   return h("div",{class:"glass rep nwk st",style:"--i:1"},h("div",{class:"tch"},h("b",null,"Gelecek hafta"),h("small",null,fmt(dateOf(w,0))+" – "+fmt(dateOf(w,6)))),
     rows.length?rows:h("p",{class:"nempty"},"Gelecek hafta video kalmadı, soru çözümü ve deneme haftası."),
     h("div",{class:"rwarn",style:"background:color-mix(in srgb,var(--acc) 14%,transparent);color:var(--fg)"},h("b",null,"Haftalık soru hedefi: "+qGoal()),h("span",null,"Pazartesi 07:00'de paragraf ve problemle başlıyorsun.")))}
+
+/* BÜYÜK KONU TABLOSU */
+function bigTable(){const ov=h("div",{class:"bigt"});document.body.append(ov);document.body.style.overflow="hidden";requestAnimationFrame(()=>ov.classList.add("on"));
+  const close=()=>{ov.classList.remove("on");document.body.style.overflow="";setTimeout(()=>ov.remove(),350)};
+  const draw=()=>{ov.textContent="";const ti=todayIdx(),cols=ORDER.filter(s_=>topicsOf(s_).length);
+    const all=cols.flatMap(topicsOf),dn=all.filter(kDone).length,lt=all.filter(t=>!kDone(t)&&t.due<ti).length;
+    let last=0;all.forEach(t=>last=Math.max(last,Math.floor(t.due/7)));
+    ov.append(h("div",{class:"bgh"},h("div",null,h("b",null,"Konu tablosu"),h("small",null,dn+" / "+all.length+" konu bitti"+(lt?" · "+lt+" konu geride":""))),h("button",{class:"sx","aria-label":"Kapat",onclick:close},"×")));
+    const tb=h("table",{class:"bgtb"});
+    tb.append(h("tr",null,h("th",{class:"kw"},"Hafta"),cols.map(s_=>h("th",{style:"--dc:"+S[s_].c},h("span",{class:"dot"}),S[s_].n))));
+    for(let w=0;w<=last;w++){tb.append(h("tr",{class:w===nW?"cur":w<nW?"past":""},h("td",{class:"kw"},h("b",null,(w+1)+". hafta"),h("small",null,fmt(dateOf(w,0))+" – "+fmt(dateOf(w,6)))),
+      cols.map(s_=>h("td",{style:"--dc:"+S[s_].c},topicsOf(s_).filter(t=>Math.floor(t.due/7)===w).map(t=>h("button",{class:"kc"+(kDone(t)?" d":"")+(!kDone(t)&&t.due<ti?" l":""),onclick:ev=>{kToggle(t,ev.currentTarget);draw()}},t.name))))))}
+    const wrap=h("div",{class:"bgw"},tb);ov.append(wrap,h("p",{class:"bgf"},"Konuya dokun: bitti · yeşil: bitti · kırmızı: geride · çerçeve: bu hafta"));
+    requestAnimationFrame(()=>{const c=wrap.querySelector("tr.cur");if(c&&!draw.done){wrap.scrollTop=Math.max(0,c.offsetTop-60);draw.done=1}})};
+  draw()}
 
 /* sekmeler */
 const VIEWS={bugun:vBugun,hafta:vHafta,sayac:vSayac,soru:m=>{vSoru(m);m.append(h("div",{id:"qlog"}));drawLog()}},TABS=["bugun","hafta","sayac","soru"];
